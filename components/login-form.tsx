@@ -89,7 +89,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
               width={500}
               height={500}
               decoding='async'
-              loading='lazy'
+              priority
               style={{ color: 'transparent' }}
             />
           </div>
