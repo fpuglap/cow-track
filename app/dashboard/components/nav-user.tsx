@@ -1,3 +1,5 @@
+'use client';
+
 import {
   IconCreditCard,
   IconDotsVertical,
@@ -24,7 +26,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { signOut } from '@/auth';
+import { logout } from '@/app/lib/actions';
 
 export function NavUser({
   user,
@@ -96,13 +98,7 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <form
-                action={async () => {
-                  'use server';
-                  await signOut({ redirectTo: '/' });
-                }}
-                className='w-full'
-              >
+              <form action={logout} className='w-full'>
                 <button
                   type='submit'
                   className='flex w-full items-center gap-2'
