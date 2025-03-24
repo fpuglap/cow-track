@@ -46,6 +46,8 @@ async function main() {
   const client = await db.connect();
   await seedUsers(client);
   client.release();
+  console.log('Seed process completed.');
+  process.exit(0);
 }
 
 main().catch((err) => {
@@ -53,4 +55,5 @@ main().catch((err) => {
     'An error occurred while attempting to seed the database:',
     err
   );
+  process.exit(1);
 });
