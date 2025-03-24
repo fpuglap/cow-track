@@ -10,7 +10,7 @@ export const authConfig = {
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       const isRootPath = nextUrl.pathname === '/';
 
-      // Manejo para ruta raíz
+      // Handling for root path
       if (isRootPath) {
         if (isLoggedIn)
           return Response.redirect(new URL('/dashboard', nextUrl));
