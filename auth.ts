@@ -4,7 +4,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { sql } from '@vercel/postgres';
 import { z } from 'zod';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 // Type for user from database
 interface User {

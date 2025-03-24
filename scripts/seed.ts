@@ -1,6 +1,6 @@
 import { db, VercelPoolClient } from '@vercel/postgres';
 import { users } from '@/app/lib/placeholder-data';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 async function seedUsers(client: VercelPoolClient) {
   try {
