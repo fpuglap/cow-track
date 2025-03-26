@@ -590,22 +590,23 @@ export function DataTable({
   );
 }
 
+// Sample data with simple field names: rotation, recovery
 const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 },
+  { date: '2024-01-01', rotation: 186, recovery: 80 },
+  { date: '2024-02-01', rotation: 305, recovery: 200 },
+  { date: '2024-03-01', rotation: 237, recovery: 120 },
+  { date: '2024-04-01', rotation: 73, recovery: 190 },
+  { date: '2024-05-01', rotation: 209, recovery: 130 },
+  { date: '2024-06-01', rotation: 214, recovery: 140 },
 ];
 
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  rotation: {
+    label: 'Rotaciones',
     color: 'var(--primary)',
   },
-  mobile: {
-    label: 'Mobile',
+  recovery: {
+    label: 'Recuperación (%)',
     color: 'var(--primary)',
   },
 } satisfies ChartConfig;
@@ -653,19 +654,19 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     content={<ChartTooltipContent indicator='dot' />}
                   />
                   <Area
-                    dataKey='mobile'
+                    dataKey='recovery'
                     type='natural'
-                    fill='var(--color-mobile)'
+                    fill='var(--color-recovery)'
                     fillOpacity={0.6}
-                    stroke='var(--color-mobile)'
+                    stroke='var(--color-recovery)'
                     stackId='a'
                   />
                   <Area
-                    dataKey='desktop'
+                    dataKey='rotation'
                     type='natural'
-                    fill='var(--color-desktop)'
+                    fill='var(--color-rotation)'
                     fillOpacity={0.4}
-                    stroke='var(--color-desktop)'
+                    stroke='var(--color-rotation)'
                     stackId='a'
                   />
                 </AreaChart>
