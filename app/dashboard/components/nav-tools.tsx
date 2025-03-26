@@ -25,7 +25,7 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 
-export function NavDocuments({
+export function NavTools({
   items,
 }: {
   items: {
@@ -38,7 +38,7 @@ export function NavDocuments({
 
   return (
     <SidebarGroup className='group-data-[collapsible=icon]:hidden'>
-      <SidebarGroupLabel>Documents</SidebarGroupLabel>
+      <SidebarGroupLabel>Herramientas</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
@@ -83,7 +83,7 @@ export function NavDocuments({
         <SidebarMenuItem>
           <SidebarMenuButton className='text-sidebar-foreground/70'>
             <IconDots className='text-sidebar-foreground/70' />
-            <span>More</span>
+            <span>Más</span>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>

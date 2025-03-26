@@ -49,7 +49,7 @@ export function NavSecondary({
             <SidebarMenuButton asChild>
               <label>
                 <IconBrightness />
-                <span>Dark Mode</span>
+                <span>Modo Oscuro</span>
                 {mounted ? (
                   <Switch
                     className='ml-auto'

@@ -28,7 +28,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { NavDocuments } from '@/app/dashboard/components/nav-documents';
+import { NavTools } from '@/app/dashboard/components/nav-tools';
 import { NavMain } from '@/app/dashboard/components/nav-main';
 import { NavSecondary } from '@/app/dashboard/components/nav-secondary';
 import { NavUser } from '@/app/dashboard/components/nav-user';
@@ -41,27 +41,27 @@ const data = {
   },
   navMain: [
     {
-      title: 'Dashboard',
+      title: 'Panel',
       url: '#',
       icon: IconDashboard,
     },
     {
-      title: 'Lifecycle',
+      title: 'Rotaciones',
       url: '#',
       icon: IconListDetails,
     },
     {
-      title: 'Analytics',
+      title: 'Análisis',
       url: '#',
       icon: IconChartBar,
     },
     {
-      title: 'Projects',
+      title: 'Potreros',
       url: '#',
       icon: IconFolder,
     },
     {
-      title: 'Team',
+      title: 'Ganado',
       url: '#',
       icon: IconUsers,
     },
@@ -116,34 +116,34 @@ const data = {
   ],
   navSecondary: [
     {
-      title: 'Settings',
+      title: 'Configuración',
       url: '#',
       icon: IconSettings,
     },
     {
-      title: 'Get Help',
+      title: 'Ayuda',
       url: '#',
       icon: IconHelp,
     },
     {
-      title: 'Search',
+      title: 'Búsqueda',
       url: '#',
       icon: IconSearch,
     },
   ],
-  documents: [
+  tools: [
     {
-      name: 'Data Library',
+      name: 'Alertas',
       url: '#',
       icon: IconDatabase,
     },
     {
-      name: 'Reports',
+      name: 'Calendario',
       url: '#',
       icon: IconReport,
     },
     {
-      name: 'Word Assistant',
+      name: 'Informes',
       url: '#',
       icon: IconFileWord,
     },
@@ -162,7 +162,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href='#'>
                 <IconInnerShadowTop className='!size-5' />
-                <span className='text-base font-semibold'>Acme Inc.</span>
+                <span className='text-base font-semibold'>Cow Track</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -170,7 +170,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        <NavTools items={data.tools} />
         <NavSecondary items={data.navSecondary} className='mt-auto' />
       </SidebarContent>
       <SidebarFooter>
