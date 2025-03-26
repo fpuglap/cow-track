@@ -65,16 +65,16 @@ export function NavTools({
               >
                 <DropdownMenuItem>
                   <IconFolder />
-                  <span>Open</span>
+                  <span>Abrir</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <IconShare3 />
-                  <span>Share</span>
+                  <span>Compartir</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant='destructive'>
                   <IconTrash />
-                  <span>Delete</span>
+                  <span>Eliminar</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
