@@ -39,6 +39,8 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar();
 
+  console.log('Avatar path:', user.avatar);
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -85,15 +87,15 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <IconUserCircle />
-                Account
+                Cuenta
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconCreditCard />
-                Billing
+                Facturación
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconNotification />
-                Notifications
+                Notificaciones
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -104,7 +106,7 @@ export function NavUser({
                   className='flex w-full items-center gap-2'
                 >
                   <IconLogout />
-                  Log out
+                  Cerrar sesión
                 </button>
               </form>
             </DropdownMenuItem>

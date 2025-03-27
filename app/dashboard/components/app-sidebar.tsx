@@ -1,5 +1,7 @@
 'use client';
 
+import CowImage from 'public/avatars/cow-track-avatar.jpg';
+
 import * as React from 'react';
 import {
   IconCamera,
@@ -35,9 +37,9 @@ import { NavUser } from '@/app/dashboard/components/nav-user';
 
 const data = {
   user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: 'La Esmeralda',
+    email: 'esmeralda@admin.com',
+    avatar: CowImage.src,
   },
   navMain: [
     {
