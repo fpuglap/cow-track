@@ -81,7 +81,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
               </div>
             </div>
           </form>
-          <div className='relative hidden md:block w-full overflow-hidden md:h-[450px] lg:h-[600px]'>
+          <div className='relative block w-full overflow-hidden h-96 sm:h-[450px] lg:h-[600px]'>
             <Image
               className='absolute inset-0 h-full w-full object-cover'
               src='https://images.unsplash.com/photo-1583364428520-fa6c5013c0c3?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
