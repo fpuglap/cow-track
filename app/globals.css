@@ -141,20 +141,22 @@
     @apply bg-background text-foreground;
   }
 
-  button,
-  [role='button'],
-  [type='button'],
-  [type='submit'],
-  [type='reset'],
-  select,
-  .btn,
-  .clickable,
-  .toggle,
-  .dropdown,
-  .rotaciones,
-  .personalizar-columnas,
-  .registrar-rotacion,
-  a:not([disabled]) {
-    cursor: pointer;
+  @media (hover: hover) {
+    button,
+    [role='button'],
+    [type='button'],
+    [type='submit'],
+    [type='reset'],
+    select,
+    .btn,
+    .clickable,
+    .toggle,
+    .dropdown,
+    .rotaciones,
+    .personalizar-columnas,
+    .registrar-rotacion,
+    a:not([disabled]) {
+      cursor: pointer;
+    }
   }
 }
