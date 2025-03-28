@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL('https://v4.shadcn.com'),
+  metadataBase: new URL('https://cow-track-ui.vercel.app/'),
   description: siteConfig.description,
   keywords: [
     'Next.js',
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'shadcn',
-      url: 'https://shadcn.com',
+      name: 'Facundo Pugliese',
+      url: 'https://cow-track-ui.vercel.app/',
     },
   ],
-  creator: 'shadcn',
+  creator: 'Facundo Pugliese',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://v4.shadcn.com',
+    url: 'https://cow-track-ui.vercel.app/',
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
