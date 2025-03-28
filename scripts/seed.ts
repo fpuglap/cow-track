@@ -55,7 +55,6 @@ async function seedRotations(client: VercelPoolClient) {
         rotation_date DATE NOT NULL,
         days_in_pasture INTEGER,
         observations TEXT,
-        urgent BOOLEAN DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `;
@@ -73,8 +72,7 @@ async function seedRotations(client: VercelPoolClient) {
             destination_pasture, 
             rotation_date, 
             days_in_pasture, 
-            observations,
-            urgent
+            observations
           )
           VALUES (
             ${rotation.id}, 
@@ -83,8 +81,7 @@ async function seedRotations(client: VercelPoolClient) {
             ${rotation.destination_pasture}, 
             ${rotation.rotation_date}, 
             ${rotation.days_in_pasture}, 
-            ${rotation.observations},
-            ${rotation.urgent}
+            ${rotation.observations}
           )
           ON CONFLICT (id) DO NOTHING;
         `;

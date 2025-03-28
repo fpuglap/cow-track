@@ -10,7 +10,6 @@ export type Rotation = {
   rotation_date: string;
   days_in_pasture: number;
   observations: string;
-  urgent: boolean;
   created_at?: string;
 };
 
@@ -29,7 +28,6 @@ export async function fetchRotations() {
         TO_CHAR(rotation_date, 'YYYY-MM-DD') as rotation_date,
         days_in_pasture,
         observations,
-        urgent,
         TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') as created_at
       FROM rotations
       ORDER BY rotation_date DESC
@@ -57,7 +55,6 @@ export async function fetchRotationById(id: string) {
         TO_CHAR(rotation_date, 'YYYY-MM-DD') as rotation_date,
         days_in_pasture,
         observations,
-        urgent,
         TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') as created_at
       FROM rotations
       WHERE id = ${id}
@@ -89,7 +86,6 @@ export async function fetchRotationsByGroup(group: string) {
         TO_CHAR(rotation_date, 'YYYY-MM-DD') as rotation_date,
         days_in_pasture,
         observations,
-        urgent,
         TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') as created_at
       FROM rotations
       WHERE cattle_group = ${group}
@@ -113,7 +109,6 @@ export async function createRotation({
   rotation_date,
   days_in_pasture,
   observations,
-  urgent,
 }: {
   cattle_group: string;
   origin_pasture: string;
@@ -143,7 +138,6 @@ export async function createRotation({
         ${rotation_date}, 
         ${days_in_pasture}, 
         ${observations},
-        ${urgent}
       )
     `;
   } catch (error) {
@@ -163,7 +157,6 @@ export async function updateRotation({
   rotation_date,
   days_in_pasture,
   observations,
-  urgent,
 }: {
   id: string;
   cattle_group: string;
@@ -184,7 +177,6 @@ export async function updateRotation({
         rotation_date = ${rotation_date},
         days_in_pasture = ${days_in_pasture},
         observations = ${observations},
-        urgent = ${urgent}
       WHERE id = ${id}
     `;
   } catch (error) {
@@ -229,7 +221,6 @@ export async function fetchFilteredRotations(
         TO_CHAR(rotation_date, 'YYYY-MM-DD') as rotation_date,
         days_in_pasture,
         observations,
-        urgent,
         TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') as created_at
       FROM rotations
       WHERE

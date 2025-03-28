@@ -65,7 +65,6 @@ const RotationFormSchema = z.object({
     .int()
     .min(0, 'Los días deben ser un número positivo'),
   observations: z.string().optional(),
-  urgent: z.boolean().default(false),
 });
 
 export function RotationForm() {
@@ -77,7 +76,6 @@ export function RotationForm() {
       destination_pasture: '',
       days_in_pasture: 0,
       observations: '',
-      urgent: false,
     },
   });
 
@@ -242,29 +240,6 @@ export function RotationForm() {
                 Información adicional relevante sobre esta rotación.
               </FormDescription>
               <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='urgent'
-          render={({ field }) => (
-            <FormItem className='flex flex-row items-start gap-3 rounded-md border p-4 shadow-xs'>
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <div className='flex flex-col gap-1'>
-                <FormLabel className='leading-snug'>
-                  Marcar como urgente
-                </FormLabel>
-                <FormDescription className='leading-snug'>
-                  Indica que esta rotación debe realizarse con prioridad.
-                </FormDescription>
-              </div>
             </FormItem>
           )}
         />

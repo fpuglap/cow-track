@@ -17,7 +17,6 @@ export const rotations = [
     rotation_date: '2025-03-23',
     days_in_pasture: 5,
     observations: 'Rotación programada',
-    urgent: false,
   },
   {
     id: '3958dc9e-712f-4377-85e9-fec4b6a6442b',
@@ -27,7 +26,6 @@ export const rotations = [
     rotation_date: '2025-03-21',
     days_in_pasture: 24,
     observations: 'Pasto agotado',
-    urgent: true,
   },
   {
     id: '3958dc9e-712f-4377-85e9-fec4b6a6442c',
@@ -37,7 +35,6 @@ export const rotations = [
     rotation_date: '2025-03-19',
     days_in_pasture: 13,
     observations: 'Rotación normal',
-    urgent: false,
   },
   {
     id: '3958dc9e-712f-4377-85e9-fec4b6a6442d',
@@ -47,7 +44,6 @@ export const rotations = [
     rotation_date: '2025-03-17',
     days_in_pasture: 23,
     observations: 'Rotación por falta de agua',
-    urgent: true,
   },
   {
     id: '3958dc9e-712f-4377-85e9-fec4b6a6442e',
@@ -57,7 +53,6 @@ export const rotations = [
     rotation_date: '2025-03-15',
     days_in_pasture: 16,
     observations: 'Rotación urgente',
-    urgent: true,
   },
   {
     id: '3958dc9e-712f-4377-85e9-fec4b6a6442f',
@@ -67,7 +62,6 @@ export const rotations = [
     rotation_date: '2025-03-13',
     days_in_pasture: 8,
     observations: 'Descanso de potrero',
-    urgent: false,
   },
   {
     id: '4058dc9e-712f-4377-85e9-fec4b6a64420',
@@ -77,7 +71,6 @@ export const rotations = [
     rotation_date: '2025-03-11',
     days_in_pasture: 21,
     observations: 'Pasto agotado',
-    urgent: true,
   },
   {
     id: '4158dc9e-712f-4377-85e9-fec4b6a64421',
@@ -87,7 +80,6 @@ export const rotations = [
     rotation_date: '2025-03-09',
     days_in_pasture: 26,
     observations: 'Rotación programada',
-    urgent: true,
   },
   {
     id: '4258dc9e-712f-4377-85e9-fec4b6a64422',
@@ -97,7 +89,6 @@ export const rotations = [
     rotation_date: '2025-03-07',
     days_in_pasture: 23,
     observations: 'Rotación urgente',
-    urgent: true,
   },
   {
     id: '4358dc9e-712f-4377-85e9-fec4b6a64423',
@@ -107,7 +98,6 @@ export const rotations = [
     rotation_date: '2025-03-05',
     days_in_pasture: 28,
     observations: 'Rotación por falta de agua',
-    urgent: true,
   },
   {
     id: '4458dc9e-712f-4377-85e9-fec4b6a64424',
@@ -117,7 +107,6 @@ export const rotations = [
     rotation_date: '2025-03-03',
     days_in_pasture: 31,
     observations: 'Rotación urgente',
-    urgent: true,
   },
   {
     id: '4558dc9e-712f-4377-85e9-fec4b6a64425',
@@ -127,7 +116,6 @@ export const rotations = [
     rotation_date: '2025-03-01',
     days_in_pasture: 10,
     observations: 'Descanso de potrero',
-    urgent: false,
   },
   {
     id: '4658dc9e-712f-4377-85e9-fec4b6a64426',
@@ -137,7 +125,6 @@ export const rotations = [
     rotation_date: '2025-02-27',
     days_in_pasture: 33,
     observations: 'Rotación por falta de agua',
-    urgent: true,
   },
   {
     id: '4758dc9e-712f-4377-85e9-fec4b6a64427',
@@ -147,7 +134,6 @@ export const rotations = [
     rotation_date: '2025-02-25',
     days_in_pasture: 34,
     observations: 'Pasto agotado',
-    urgent: true,
   },
   {
     id: '4858dc9e-712f-4377-85e9-fec4b6a64428',
@@ -157,7 +143,6 @@ export const rotations = [
     rotation_date: '2025-02-23',
     days_in_pasture: 35,
     observations: 'Rotación urgente',
-    urgent: true,
   },
   {
     id: '4958dc9e-712f-4377-85e9-fec4b6a64429',
@@ -167,7 +152,6 @@ export const rotations = [
     rotation_date: '2025-02-21',
     days_in_pasture: 36,
     observations: 'Rotación programada',
-    urgent: true,
   },
   {
     id: '5058dc9e-712f-4377-85e9-fec4b6a6442a',
@@ -177,7 +161,6 @@ export const rotations = [
     rotation_date: '2025-02-19',
     days_in_pasture: 37,
     observations: 'Rotación urgente',
-    urgent: true,
   },
   {
     id: '5158dc9e-712f-4377-85e9-fec4b6a6442b',
@@ -187,7 +170,6 @@ export const rotations = [
     rotation_date: '2025-02-17',
     days_in_pasture: 38,
     observations: 'Pasto agotado',
-    urgent: true,
   },
   {
     id: '5258dc9e-712f-4377-85e9-fec4b6a6442c',
@@ -197,7 +179,6 @@ export const rotations = [
     rotation_date: '2025-02-15',
     days_in_pasture: 39,
     observations: 'Rotación por falta de agua',
-    urgent: true,
   },
   {
     id: '5358dc9e-712f-4377-85e9-fec4b6a6442d',
@@ -207,6 +188,5 @@ export const rotations = [
     rotation_date: '2025-02-13',
     days_in_pasture: 40,
     observations: 'Rotación urgente',
-    urgent: true,
   },
 ];

@@ -116,7 +116,6 @@ export const schema = z.object({
   date: z.string(),
   days_in_paddock: z.number(),
   notes: z.string().optional(),
-  urgent: z.boolean().optional(),
 });
 
 // Create a separate component for the drag handle
