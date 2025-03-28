@@ -129,6 +129,7 @@ export async function createRotationAction(
       success: true,
     };
   } catch (error) {
+    console.error('Error al crear rotación:', error);
     return {
       message: 'Error de base de datos: No se pudo crear la rotación.',
       success: false,

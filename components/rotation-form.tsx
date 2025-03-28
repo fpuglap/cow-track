@@ -104,6 +104,7 @@ export function RotationForm() {
         });
       }
     } catch (error) {
+      console.error('Error al enviar el formulario:', error);
       toast('Error', {
         description: 'Ocurrió un error al registrar la rotación.',
       });
