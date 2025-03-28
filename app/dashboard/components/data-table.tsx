@@ -447,7 +447,7 @@ export function DataTable({
                 <span className='hidden lg:inline'>Registrar Rotación</span>
               </Button>
             </DialogTrigger>
-            <DialogContent className='sm:max-w-[550px]'>
+            <DialogContent className='max-h-[90vh] overflow-y-auto'>
               <DialogHeader>
                 <DialogTitle>Registrar Rotación</DialogTitle>
               </DialogHeader>

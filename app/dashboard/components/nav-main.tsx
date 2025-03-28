@@ -43,7 +43,7 @@ export function NavMain({
                   <span>Nueva rotación</span>
                 </SidebarMenuButton>
               </DialogTrigger>
-              <DialogContent className='sm:max-w-[550px]'>
+              <DialogContent className='max-h-[90vh] overflow-y-auto'>
                 <DialogHeader>
                   <DialogTitle>Registrar Rotación</DialogTitle>
                 </DialogHeader>
