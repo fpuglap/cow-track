@@ -98,6 +98,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { RotationForm } from '@/components/rotation-form';
 
 // Schema for cattle rotations
 export const schema = z.object({
@@ -432,10 +440,20 @@ export function DataTable({
                 })}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button variant='outline' size='sm'>
-            <IconPlus />
-            <span className='hidden lg:inline'>Registrar Rotación</span>
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant='outline' size='sm'>
+                <IconPlus />
+                <span className='hidden lg:inline'>Registrar Rotación</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className='sm:max-w-[550px]'>
+              <DialogHeader>
+                <DialogTitle>Registrar Rotación</DialogTitle>
+              </DialogHeader>
+              <RotationForm />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       <TabsContent

@@ -1,5 +1,6 @@
 import { db, VercelPoolClient } from '@vercel/postgres';
 import { users } from '@/app/lib/placeholder-data';
+import { rotations } from '@/app/lib/placeholder-data';
 import bcrypt from 'bcryptjs';
 
 async function seedUsers(client: VercelPoolClient) {
@@ -42,9 +43,70 @@ async function seedUsers(client: VercelPoolClient) {
   }
 }
 
+async function seedRotations(client: VercelPoolClient) {
+  try {
+    // Create the "rotations" table if it doesn't exist
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS rotations (
+        id UUID PRIMARY KEY,
+        cattle_group VARCHAR(255) NOT NULL,
+        origin_pasture VARCHAR(255) NOT NULL,
+        destination_pasture VARCHAR(255) NOT NULL,
+        rotation_date DATE NOT NULL,
+        days_in_pasture INTEGER,
+        observations TEXT,
+        urgent BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `;
+
+    console.log(`Created "rotations" table`);
+
+    // Insert data into the "rotations" table
+    const insertedRotations = await Promise.all(
+      rotations.map(async (rotation) => {
+        return client.sql`
+          INSERT INTO rotations (
+            id, 
+            cattle_group, 
+            origin_pasture, 
+            destination_pasture, 
+            rotation_date, 
+            days_in_pasture, 
+            observations,
+            urgent
+          )
+          VALUES (
+            ${rotation.id}, 
+            ${rotation.cattle_group}, 
+            ${rotation.origin_pasture}, 
+            ${rotation.destination_pasture}, 
+            ${rotation.rotation_date}, 
+            ${rotation.days_in_pasture}, 
+            ${rotation.observations},
+            ${rotation.urgent}
+          )
+          ON CONFLICT (id) DO NOTHING;
+        `;
+      })
+    );
+
+    console.log(`Seeded ${insertedRotations.length} rotations`);
+
+    return {
+      createTable,
+      rotations: insertedRotations,
+    };
+  } catch (error) {
+    console.error('Error seeding rotations:', error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
   await seedUsers(client);
+  await seedRotations(client);
   client.release();
   console.log('Seed process completed.');
   process.exit(0);
