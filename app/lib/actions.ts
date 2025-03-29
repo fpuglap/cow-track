@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { AuthError } from 'next-auth';
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
-import { createRotation } from './data';
+import { createRotation, updateRotation } from './data';
 
 /**
  * Server action for user authentication
@@ -126,6 +126,78 @@ export async function createRotationAction(
     console.error('Error al crear rotación:', error);
     return {
       message: 'Error de base de datos: No se pudo crear la rotación.',
+      success: false,
+    };
+  }
+}
+
+/**
+ * Server action to update a rotation
+ */
+export async function updateRotationAction(
+  prevState: RotationFormState,
+  formData: FormData
+) {
+  // Create a schema that includes the ID for update
+  const UpdateRotationSchema = RotationSchema.extend({
+    id: z.string().min(1, 'El ID es requerido para actualizar'),
+  });
+
+  // Validate form data
+  const validatedFields = UpdateRotationSchema.safeParse({
+    id: formData.get('id'),
+    cattle_group: formData.get('cattle_group'),
+    origin_pasture: formData.get('origin_pasture'),
+    destination_pasture: formData.get('destination_pasture'),
+    days_in_pasture: formData.get('days_in_pasture'),
+    observations: formData.get('observations'),
+    rotation_date: formData.get('rotation_date'),
+  });
+
+  // Return validation errors if any
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Faltan campos requeridos. No se pudo actualizar la rotación.',
+      success: false,
+    };
+  }
+
+  // Extract validated data
+  const {
+    id,
+    cattle_group,
+    origin_pasture,
+    destination_pasture,
+    days_in_pasture,
+    observations,
+    rotation_date,
+  } = validatedFields.data;
+
+  try {
+    // Update rotation in database
+    await updateRotation({
+      id,
+      cattle_group,
+      origin_pasture,
+      destination_pasture,
+      rotation_date: rotation_date || '', // Pass the existing date
+      days_in_pasture,
+      observations: observations || '',
+    });
+
+    // Revalidate the dashboard to refresh the data
+    revalidatePath('/dashboard');
+
+    // Return success state
+    return {
+      message: 'Rotación actualizada exitosamente.',
+      success: true,
+    };
+  } catch (error) {
+    console.error('Error al actualizar rotación:', error);
+    return {
+      message: 'Error de base de datos: No se pudo actualizar la rotación.',
       success: false,
     };
   }

@@ -63,10 +63,8 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -106,6 +104,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { RotationForm } from '@/components/rotation-form';
+import { UpdateRotationForm } from '@/components/update-rotation-form';
 
 export const schema = z.object({
   id: z.string(),
@@ -635,9 +634,14 @@ const chartConfig = {
 
 function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
   const isMobile = useIsMobile();
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <Drawer direction={isMobile ? 'bottom' : 'right'}>
+    <Drawer
+      open={open}
+      onOpenChange={setOpen}
+      direction={isMobile ? 'bottom' : 'right'}
+    >
       <DrawerTrigger asChild>
         <Button variant='link' className='text-foreground w-fit px-0 text-left'>
           {item.group}
@@ -709,72 +713,8 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               <Separator />
             </>
           )}
-          <form className='flex flex-col gap-4'>
-            <div className='flex flex-col gap-3'>
-              <Label htmlFor='group'>Grupo de Ganado</Label>
-              <Input id='group' defaultValue={item.group} />
-            </div>
-            <div className='grid grid-cols-2 gap-4'>
-              <div className='flex flex-col gap-3'>
-                <Label htmlFor='source_paddock'>Potrero Origen</Label>
-                <Select defaultValue={item.origin}>
-                  <SelectTrigger id='source_paddock' className='w-full'>
-                    <SelectValue placeholder='Seleccionar potrero' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value='Potrero Norte'>Potrero Norte</SelectItem>
-                    <SelectItem value='Potrero Sur'>Potrero Sur</SelectItem>
-                    <SelectItem value='Potrero Este'>Potrero Este</SelectItem>
-                    <SelectItem value='Potrero Oeste'>Potrero Oeste</SelectItem>
-                    <SelectItem value='Potrero Central'>
-                      Potrero Central
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className='flex flex-col gap-3'>
-                <Label htmlFor='target_paddock'>Potrero Destino</Label>
-                <Select defaultValue={item.destination}>
-                  <SelectTrigger id='target_paddock' className='w-full'>
-                    <SelectValue placeholder='Seleccionar potrero' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value='Potrero Norte'>Potrero Norte</SelectItem>
-                    <SelectItem value='Potrero Sur'>Potrero Sur</SelectItem>
-                    <SelectItem value='Potrero Este'>Potrero Este</SelectItem>
-                    <SelectItem value='Potrero Oeste'>Potrero Oeste</SelectItem>
-                    <SelectItem value='Potrero Central'>
-                      Potrero Central
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            <div className='grid grid-cols-2 gap-4'>
-              <div className='flex flex-col gap-3'>
-                <Label htmlFor='date'>Fecha</Label>
-                <Input id='date' defaultValue={item.date} />
-              </div>
-              <div className='flex flex-col gap-3'>
-                <Label htmlFor='days_in_paddock'>Días en Potrero</Label>
-                <Input
-                  id='days_in_paddock'
-                  defaultValue={item.days.toString()}
-                />
-              </div>
-            </div>
-            <div className='flex flex-col gap-3'>
-              <Label htmlFor='notes'>Observaciones</Label>
-              <Input id='notes' defaultValue={item.notes || ''} />
-            </div>
-          </form>
         </div>
-        <DrawerFooter>
-          <Button>Guardar</Button>
-          <DrawerClose asChild>
-            <Button variant='outline'>Cerrar</Button>
-          </DrawerClose>
-        </DrawerFooter>
+        <UpdateRotationForm item={item} onSuccess={() => setOpen(false)} />
       </DrawerContent>
     </Drawer>
   );

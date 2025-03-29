@@ -25,29 +25,7 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { createRotationAction } from '@/app/lib/actions';
-
-// Lista de grupos de ganado disponibles
-const cattleGroups = [
-  'Vacas Cría 1',
-  'Vacas Cría 2',
-  'Novillos A',
-  'Novillos B',
-  'Terneros 2022',
-  'Terneros 2023',
-  'Vaquillos',
-  'Vaquillos Jóvenes',
-  'Vacas Lecheras',
-  'Toros',
-];
-
-// Lista de potreros disponibles
-const paddocks = [
-  'Potrero Norte',
-  'Potrero Sur',
-  'Potrero Este',
-  'Potrero Oeste',
-  'Potrero Central',
-];
+import { cattleGroups, paddocks } from '@/app/lib/constants';
 
 const RotationFormSchema = z.object({
   cattle_group: z.string({
