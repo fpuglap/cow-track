@@ -106,17 +106,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { RotationForm } from '@/components/rotation-form';
-import { Rotation } from '@/app/lib/data';
-
-type MappedRotation = {
-  id: string;
-  group: string;
-  origin: string;
-  destination: string;
-  date: string;
-  days: number;
-  notes: string;
-};
 
 export const schema = z.object({
   id: z.string(),
