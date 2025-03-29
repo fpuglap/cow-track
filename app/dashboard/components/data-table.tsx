@@ -106,20 +106,30 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { RotationForm } from '@/components/rotation-form';
+import { Rotation } from '@/app/lib/data';
 
-// Schema for cattle rotations
+type MappedRotation = {
+  id: string;
+  group: string;
+  origin: string;
+  destination: string;
+  date: string;
+  days: number;
+  notes: string;
+};
+
 export const schema = z.object({
-  id: z.number(),
+  id: z.string(),
   group: z.string(),
-  source_paddock: z.string(),
-  target_paddock: z.string(),
+  origin: z.string(),
+  destination: z.string(),
+  days: z.number(),
+  notes: z.string().nullable().optional(),
   date: z.string(),
-  days_in_paddock: z.number(),
-  notes: z.string().optional(),
 });
 
 // Create a separate component for the drag handle
-function DragHandle({ id }: { id: number }) {
+function DragHandle({ id }: { id: string }) {
   const { attributes, listeners } = useSortable({
     id,
   });
@@ -180,12 +190,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'source_paddock',
+    accessorKey: 'origin',
     header: 'Potrero Origen',
     cell: ({ row }) => (
       <div className='w-32'>
         <Badge variant='outline' className='text-muted-foreground px-1.5'>
-          {row.original.source_paddock}
+          {row.original.origin}
         </Badge>
       </div>
     ),
@@ -198,12 +208,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'target_paddock',
+    accessorKey: 'destination',
     header: 'Potrero Destino',
     cell: ({ row }) => (
       <div className='w-32'>
         <Badge variant='outline' className='text-muted-foreground px-1.5'>
-          {row.original.target_paddock}
+          {row.original.destination}
         </Badge>
       </div>
     ),
@@ -214,7 +224,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     cell: ({ row }) => <div>{row.original.date}</div>,
   },
   {
-    accessorKey: 'days_in_paddock',
+    accessorKey: 'days',
     header: 'Días en Potrero',
     cell: ({ row }) => (
       <form
@@ -232,7 +242,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </Label>
         <Input
           className='hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent'
-          defaultValue={row.original.days_in_paddock}
+          defaultValue={row.original.days}
           id={`${row.original.id}-days`}
         />
       </form>
@@ -691,15 +701,14 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               <Separator />
               <div className='grid gap-2'>
                 <div className='flex gap-2 leading-none font-medium'>
-                  {item.days_in_paddock > 15
+                  {item.days > 15
                     ? 'Requiere rotación pronto'
                     : 'Rotación dentro del periodo normal'}{' '}
                   <IconTrendingUp className='size-4' />
                 </div>
                 <div className='text-muted-foreground'>
-                  El grupo ha estado {item.days_in_paddock} días en el potrero
-                  actual. Se recomienda rotar cada 20-30 días según la condición
-                  del pasto.
+                  El grupo ha estado {item.days} días en el potrero actual. Se
+                  recomienda rotar cada 20-30 días según la condición del pasto.
                 </div>
               </div>
               <Separator />
@@ -713,7 +722,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className='grid grid-cols-2 gap-4'>
               <div className='flex flex-col gap-3'>
                 <Label htmlFor='source_paddock'>Potrero Origen</Label>
-                <Select defaultValue={item.source_paddock}>
+                <Select defaultValue={item.origin}>
                   <SelectTrigger id='source_paddock' className='w-full'>
                     <SelectValue placeholder='Seleccionar potrero' />
                   </SelectTrigger>
@@ -730,7 +739,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               </div>
               <div className='flex flex-col gap-3'>
                 <Label htmlFor='target_paddock'>Potrero Destino</Label>
-                <Select defaultValue={item.target_paddock}>
+                <Select defaultValue={item.destination}>
                   <SelectTrigger id='target_paddock' className='w-full'>
                     <SelectValue placeholder='Seleccionar potrero' />
                   </SelectTrigger>
@@ -755,7 +764,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                 <Label htmlFor='days_in_paddock'>Días en Potrero</Label>
                 <Input
                   id='days_in_paddock'
-                  defaultValue={item.days_in_paddock.toString()}
+                  defaultValue={item.days.toString()}
                 />
               </div>
             </div>
