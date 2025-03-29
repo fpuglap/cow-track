@@ -303,6 +303,7 @@ export function DataTable({
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
+  const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     setData(initialData);
@@ -443,7 +444,7 @@ export function DataTable({
                 })}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button variant='outline' size='sm'>
                 <IconPlus />
