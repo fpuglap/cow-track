@@ -6,7 +6,12 @@ import { SectionCards } from './components/section-cards';
 export default async function Page() {
   const rotations = await fetchRotations();
 
-  const mappedRotations = rotations.map((rotation) => ({
+  const sortedRotations = rotations.sort((a, b) => {
+    if (!a.created_at || !b.created_at) return 0;
+    return b.created_at.localeCompare(a.created_at);
+  });
+
+  const mappedRotations = sortedRotations.map((rotation) => ({
     id: rotation.id,
     group: rotation.cattle_group,
     origin: rotation.origin_pasture,

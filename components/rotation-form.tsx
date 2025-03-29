@@ -66,35 +66,36 @@ const RotationFormSchema = z.object({
   observations: z.string().optional(),
 });
 
-export function RotationForm() {
+const defaultValues = {
+  cattle_group: '',
+  origin_pasture: '',
+  destination_pasture: '',
+  days_in_pasture: 0,
+  observations: '',
+};
+
+export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
   const form = useForm<z.infer<typeof RotationFormSchema>>({
     resolver: zodResolver(RotationFormSchema),
-    defaultValues: {
-      cattle_group: '',
-      origin_pasture: '',
-      destination_pasture: '',
-      days_in_pasture: 0,
-      observations: '',
-    },
+    defaultValues,
   });
 
   async function onSubmit(data: z.infer<typeof RotationFormSchema>) {
-    // Convertir a FormData para usar con server actions
+    // Convert data to FormData to use it with server actions
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value.toString());
     });
 
     try {
-      // Llamar a la server action
       const result = await createRotationAction({}, formData);
 
       if (result?.success) {
         toast('Rotación registrada', {
           description: 'La rotación ha sido registrada exitosamente.',
         });
-        // Resetear el formulario
         form.reset();
+        onSuccess && onSuccess();
       } else if (result?.message) {
         toast('Error', {
           description: result.message,
@@ -120,7 +121,7 @@ export function RotationForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Grupo de ganado</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder='Seleccionar grupo de ganado' />
@@ -148,7 +149,7 @@ export function RotationForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Potrero origen</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder='Seleccionar potrero origen' />
@@ -176,7 +177,7 @@ export function RotationForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Potrero destino</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder='Seleccionar potrero destino' />

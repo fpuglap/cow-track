@@ -303,6 +303,11 @@ export function DataTable({
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
+
+  React.useEffect(() => {
+    setData(initialData);
+  }, [initialData]);
+
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );

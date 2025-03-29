@@ -18,6 +18,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { useState } from 'react';
 
 export function NavMain({
   items,
@@ -28,12 +29,14 @@ export function NavMain({
     icon?: Icon;
   }[];
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className='flex flex-col gap-2'>
         <SidebarMenu>
           <SidebarMenuItem className='flex items-center gap-2'>
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <SidebarMenuButton
                   tooltip='Nueva rotación'
@@ -47,7 +50,7 @@ export function NavMain({
                 <DialogHeader>
                   <DialogTitle>Registrar Rotación</DialogTitle>
                 </DialogHeader>
-                <RotationForm />
+                <RotationForm onSuccess={() => setOpen(false)} />
               </DialogContent>
             </Dialog>
             <Button
