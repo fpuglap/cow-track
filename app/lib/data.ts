@@ -116,7 +116,6 @@ export async function createRotation({
   rotation_date: string;
   days_in_pasture: number;
   observations: string;
-  urgent: boolean;
 }) {
   try {
     await sql`
@@ -127,8 +126,7 @@ export async function createRotation({
         destination_pasture, 
         rotation_date,
         days_in_pasture, 
-        observations,
-        urgent
+        observations
       )
       VALUES (
         uuid_generate_v4(),
@@ -137,7 +135,7 @@ export async function createRotation({
         ${destination_pasture}, 
         ${rotation_date}, 
         ${days_in_pasture}, 
-        ${observations},
+        ${observations}
       )
     `;
   } catch (error) {
@@ -165,7 +163,6 @@ export async function updateRotation({
   rotation_date: string;
   days_in_pasture: number;
   observations: string;
-  urgent: boolean;
 }) {
   try {
     await sql`
@@ -176,7 +173,7 @@ export async function updateRotation({
         destination_pasture = ${destination_pasture},
         rotation_date = ${rotation_date},
         days_in_pasture = ${days_in_pasture},
-        observations = ${observations},
+        observations = ${observations}
       WHERE id = ${id}
     `;
   } catch (error) {

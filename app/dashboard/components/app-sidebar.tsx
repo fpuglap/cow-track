@@ -1,6 +1,6 @@
 'use client';
 
-import CowImage from 'public/avatars/cow-track-avatar.jpg';
+import CowImage from 'public/avatars/cow-track-avatar.png';
 
 import * as React from 'react';
 import {

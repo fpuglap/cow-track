@@ -46,26 +46,17 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: 'https://v4.shadcn.com/opengraph-image.png',
+        url: '/public/avatars/cow-track-avatar.png',
         width: 1200,
         height: 630,
         alt: siteConfig.name,
       },
     ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: ['https://v4.shadcn.com/opengraph-image.png'],
-    creator: '@shadcn',
-  },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon.png',
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: '/site.webmanifest',
 };
 
 export const viewport: Viewport = {
