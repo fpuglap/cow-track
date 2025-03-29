@@ -51,7 +51,6 @@ const RotationSchema = z.object({
     .int()
     .min(0, 'Los días deben ser un número positivo'),
   observations: z.string().optional(),
-  urgent: z.boolean().default(false),
 });
 
 // Type for rotation form errors
@@ -62,7 +61,6 @@ export type RotationFormState = {
     destination_pasture?: string[];
     days_in_pasture?: string[];
     observations?: string[];
-    urgent?: string[];
   };
   message?: string | null;
   success?: boolean;
@@ -82,8 +80,6 @@ export async function createRotationAction(
     destination_pasture: formData.get('destination_pasture'),
     days_in_pasture: formData.get('days_in_pasture'),
     observations: formData.get('observations'),
-    urgent:
-      formData.get('urgent') === 'on' || formData.get('urgent') === 'true',
   });
 
   // Return validation errors if any
@@ -102,7 +98,6 @@ export async function createRotationAction(
     destination_pasture,
     days_in_pasture,
     observations,
-    urgent,
   } = validatedFields.data;
 
   // Generate current date in YYYY-MM-DD format
