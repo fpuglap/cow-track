@@ -95,7 +95,9 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
           description: 'La rotación ha sido registrada exitosamente.',
         });
         form.reset();
-        onSuccess && onSuccess();
+        if (onSuccess) {
+          onSuccess();
+        }
       } else if (result?.message) {
         toast('Error', {
           description: result.message,
