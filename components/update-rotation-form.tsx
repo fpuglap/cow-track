@@ -24,6 +24,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { cattleGroups, paddocks } from '@/app/lib/constants';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { RotationItem } from '@/lib/definitions';
 
 const UpdateRotationSchema = z.object({
   id: z.string(),
@@ -48,7 +49,7 @@ export function UpdateRotationForm({
   item,
   onSuccess,
 }: {
-  item: any;
+  item: RotationItem;
   onSuccess?: () => void;
 }) {
   const isMobile = useIsMobile();

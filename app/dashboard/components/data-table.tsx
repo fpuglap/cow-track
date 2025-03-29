@@ -105,6 +105,7 @@ import {
 } from '@/components/ui/dialog';
 import { RotationForm } from '@/components/rotation-form';
 import { UpdateRotationForm } from '@/components/update-rotation-form';
+import { RotationItem } from '@/lib/definitions';
 
 export const schema = z.object({
   id: z.string(),
@@ -632,7 +633,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
+function TableCellViewer({ item }: { item: RotationItem }) {
   const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
 
