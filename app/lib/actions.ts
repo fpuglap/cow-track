@@ -117,7 +117,6 @@ export async function createRotationAction(
       rotation_date: today,
       days_in_pasture,
       observations: observations || '',
-      urgent,
     });
 
     // Only revalidate the dashboard to refresh the data
