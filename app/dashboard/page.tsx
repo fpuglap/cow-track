@@ -1,8 +1,6 @@
 import { fetchRotations } from '../lib/data';
-import { ChartAreaInteractive } from './components/chart-area-interactive';
 import { DataTable } from './components/data-table';
 import DataTabs from './components/data-tabs';
-import { SectionCards } from './components/section-cards';
 
 export default async function Page() {
   const rotations = await fetchRotations();
