@@ -384,20 +384,10 @@ export function DataTable({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value='rotaciones'>Rotaciones</SelectItem>
-            <SelectItem value='potreros'>Potreros</SelectItem>
-            <SelectItem value='ganado'>Ganado</SelectItem>
-            <SelectItem value='informes'>Informes</SelectItem>
           </SelectContent>
         </Select>
         <TabsList className='**:data-[slot=badge]:bg-muted-foreground/30 hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:px-1 @4xl/main:flex'>
           <TabsTrigger value='rotaciones'>Rotaciones</TabsTrigger>
-          <TabsTrigger value='potreros'>
-            Potreros <Badge variant='secondary'>5</Badge>
-          </TabsTrigger>
-          <TabsTrigger value='ganado'>
-            Ganado <Badge variant='secondary'>3</Badge>
-          </TabsTrigger>
-          <TabsTrigger value='informes'>Informes</TabsTrigger>
         </TabsList>
         <div className='flex items-center gap-2'>
           <DropdownMenu>
@@ -591,21 +581,6 @@ export function DataTable({
               </Button>
             </div>
           </div>
-        </div>
-      </TabsContent>
-      <TabsContent value='potreros' className='flex flex-col px-4 lg:px-6'>
-        <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Información de potreros en desarrollo
-        </div>
-      </TabsContent>
-      <TabsContent value='ganado' className='flex flex-col px-4 lg:px-6'>
-        <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Información de grupos de ganado en desarrollo
-        </div>
-      </TabsContent>
-      <TabsContent value='informes' className='flex flex-col px-4 lg:px-6'>
-        <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Informes y documentos en desarrollo
         </div>
       </TabsContent>
     </Tabs>
