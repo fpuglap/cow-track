@@ -142,7 +142,7 @@ export function PaddockCards() {
   };
 
   const setPageSize = (newSize: string) => {
-    setPagination((prev) => ({
+    setPagination(() => ({
       pageIndex: 0, // Reiniciar a la primera página cuando se cambia el tamaño
       pageSize: parseInt(newSize, 10),
     }));
