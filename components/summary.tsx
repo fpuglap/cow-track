@@ -81,9 +81,9 @@ export function Summary({ stats }: SummaryProps) {
   ];
 
   return (
-    <div className='grid grid-cols-1 gap-4 @xl/main:grid-cols-2 @3xl/main:grid-cols-3 @5xl/main:grid-cols-4 px-4 lg:px-6'>
+    <div className='*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 @xl/main:grid-cols-2 @3xl/main:grid-cols-3 @5xl/main:grid-cols-4 px-4 lg:px-6 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs'>
       {summaryCards.map((card, index) => (
-        <Card key={index} className='@container/card'>
+        <Card key={index} className='@container/card' data-slot='card'>
           <CardHeader>
             <CardDescription>{card.title}</CardDescription>
             <CardTitle className='text-2xl font-semibold tabular-nums sm:text-3xl'>
