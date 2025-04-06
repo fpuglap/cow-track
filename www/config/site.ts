@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Cow Track',
   url: 'https://cow-track-ui.vercel.app/',
-  ogImage: '/public/avatars/cow-track-avatar.svg',
+  ogImage: '/public/avatars/cow-track-avatar.png',
   description:
     'An application that allows for the management of data and daily activities for an establishment, with shared access for all authorized users.',
 };
