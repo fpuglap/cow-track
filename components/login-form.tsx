@@ -21,6 +21,10 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
     undefined
   );
 
+  // Pre-fill demo credentials for easy access
+  const defaultEmail = 'admin@cowrporation.com';
+  const defaultPassword = 'Demo_P4ssw0rd!';
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card className='overflow-hidden py-0'>
@@ -40,6 +44,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
                   name='email'
                   type='email'
                   placeholder='email@example.com'
+                  defaultValue={defaultEmail}
                   required
                 />
               </div>
@@ -53,7 +58,13 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
                     Forgot your password?
                   </a>
                 </div>
-                <Input id='password' name='password' type='password' required />
+                <Input
+                  id='password'
+                  name='password'
+                  type='password'
+                  defaultValue={defaultPassword}
+                  required
+                />
               </div>
 
               {/* Show error message if authentication fails */}
