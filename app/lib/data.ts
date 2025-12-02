@@ -1,3 +1,4 @@
+import { SummaryStats } from '@/lib/definitions';
 import { sql } from '@vercel/postgres';
 import { unstable_noStore as noStore } from 'next/cache';
 
@@ -279,5 +280,101 @@ export async function getLastLocationForGroup(group: string) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch last location for group.');
+  }
+}
+
+/**
+ * Fetches summary statistics for the dashboard
+ */
+export async function fetchSummaryStats(): Promise<SummaryStats> {
+  noStore();
+  try {
+    // 1. Get total unique paddocks
+    const totalPaddocksResult = await sql`
+      SELECT COUNT(DISTINCT pasture) as count 
+      FROM (
+        SELECT DISTINCT origin_pasture as pasture FROM rotations
+        UNION
+        SELECT DISTINCT destination_pasture as pasture FROM rotations
+      ) as all_pastures
+    `;
+    const totalPaddocks = parseInt(totalPaddocksResult.rows[0].count);
+
+    // 2. Get unique cattle groups
+    const cattleGroupsResult = await sql`
+      SELECT COUNT(DISTINCT cattle_group) as count FROM rotations
+    `;
+    const totalCattleGroups = parseInt(cattleGroupsResult.rows[0].count);
+
+    // 3. Get currently occupied paddocks (based on last location of each group)
+    const activePaddocksResult = await sql`
+      WITH latest_rotations AS (
+        SELECT 
+          cattle_group,
+          destination_pasture,
+          rotation_date,
+          days_in_pasture,
+          ROW_NUMBER() OVER (PARTITION BY cattle_group ORDER BY rotation_date DESC) as rn
+        FROM rotations
+      )
+      SELECT COUNT(DISTINCT destination_pasture) as count
+      FROM latest_rotations
+      WHERE rn = 1
+    `;
+    const activePaddocks = parseInt(activePaddocksResult.rows[0].count);
+
+    // 4. Calculate paddocks in recovery status (25% of remaining paddocks as an example)
+    const remainingPaddocks = totalPaddocks - activePaddocks;
+    const recoveryPaddocks = Math.round(remainingPaddocks * 0.25);
+    const vacantPaddocks = remainingPaddocks - recoveryPaddocks;
+
+    // 5. Calculate urgent rotations (groups that have been more than 30 days in the same paddock)
+    const currentDate = new Date();
+    const urgentRotationsResult = await sql`
+      WITH latest_rotations AS (
+        SELECT 
+          cattle_group,
+          destination_pasture,
+          rotation_date,
+          days_in_pasture,
+          ROW_NUMBER() OVER (PARTITION BY cattle_group ORDER BY rotation_date DESC) as rn
+        FROM rotations
+      )
+      SELECT COUNT(*) as count
+      FROM latest_rotations
+      WHERE rn = 1 
+      AND (
+        (rotation_date + (days_in_pasture || ' days')::interval) < ${
+          currentDate.toISOString().split('T')[0]
+        }
+      )
+    `;
+    const urgentRotations = parseInt(urgentRotationsResult.rows[0].count);
+
+    // 6. Average grass height (simulated - in a real system you might have a specific table)
+    // Here we use a fixed value, but it could be calculated based on some other data
+    const avgGrassHeight = 85; // Simulated value of 85%
+
+    return {
+      totalPaddocks,
+      activePaddocks,
+      vacantPaddocks,
+      recoveryPaddocks,
+      urgentRotations,
+      avgGrassHeight,
+      totalCattleGroups,
+    };
+  } catch (error) {
+    console.error('Database Error:', error);
+    // Default values in case of error
+    return {
+      totalPaddocks: 0,
+      activePaddocks: 0,
+      vacantPaddocks: 0,
+      recoveryPaddocks: 0,
+      urgentRotations: 0,
+      avgGrassHeight: 0,
+      totalCattleGroups: 0,
+    };
   }
 }

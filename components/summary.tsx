@@ -9,10 +9,10 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react';
-import { SummaryCard, SummaryProps } from '@/lib/definitions';
+import { SummaryCard, SummaryStats } from '@/lib/definitions';
 
-export function Summary({ stats }: SummaryProps) {
-  // Build summary cards using the provided stats
+// Esta versión recibe las estadísticas como props
+export function Summary({ stats }: { stats: SummaryStats }) {
   const summaryCards: SummaryCard[] = [
     {
       title: 'Ocupación de Potreros',
@@ -53,7 +53,9 @@ export function Summary({ stats }: SummaryProps) {
       },
       line1:
         stats.urgentRotations > 0
-          ? `${stats.urgentRotations} rotación urgente hoy`
+          ? `${stats.urgentRotations} rotación${
+              stats.urgentRotations > 1 ? 'es' : ''
+            } urgente${stats.urgentRotations > 1 ? 's' : ''} hoy`
           : 'Sin rotaciones urgentes',
       line1Icon:
         stats.urgentRotations > 0 ? (

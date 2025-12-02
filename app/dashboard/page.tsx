@@ -1,18 +1,19 @@
 import { Summary } from '@/components/summary';
-import { fetchRotations } from '../lib/data';
+import { fetchRotations, fetchSummaryStats } from '../lib/data';
 import { DataTable } from './components/data-table';
 import DataTabs from './components/data-tabs';
-import { SummaryStats } from '@/lib/definitions';
-import { paddockData } from '../lib/placeholder-data';
 
 export default async function Page() {
+  // Fetch rotations for the data table
   const rotations = await fetchRotations();
 
+  // Sort rotations by creation date (most recent first)
   const sortedRotations = rotations.sort((a, b) => {
     if (!a.created_at || !b.created_at) return 0;
     return b.created_at.localeCompare(a.created_at);
   });
 
+  // Map rotations to the format expected by the DataTable component
   const mappedRotations = sortedRotations.map((rotation) => ({
     id: rotation.id,
     group: rotation.cattle_group,
@@ -23,40 +24,10 @@ export default async function Page() {
     date: rotation.rotation_date,
   }));
 
-  const calculateSummaryStats = (): SummaryStats => {
-    const allPaddocks = Object.values(paddockData).flat();
-    const totalPaddocks = allPaddocks.length;
-    const activePaddocks = allPaddocks.filter(
-      (p) => p.status === 'active'
-    ).length;
-    const vacantPaddocks = allPaddocks.filter(
-      (p) => p.status === 'vacant'
-    ).length;
-    const recoveryPaddocks = allPaddocks.filter(
-      (p) => p.status === 'recovery'
-    ).length;
-    const urgentRotations = allPaddocks.filter(
-      (p) => p.status === 'active' && p.daysLeft <= 1
-    ).length;
-    const avgGrassHeight = Math.round(
-      allPaddocks.reduce((sum, p) => sum + p.grassHeight, 0) / totalPaddocks
-    );
-    const totalCattleGroups = allPaddocks.filter(
-      (p) => p.status === 'active'
-    ).length;
+  // Fetch real summary stats from the database
+  const stats = await fetchSummaryStats();
 
-    return {
-      totalPaddocks,
-      activePaddocks,
-      vacantPaddocks,
-      recoveryPaddocks,
-      urgentRotations,
-      avgGrassHeight,
-      totalCattleGroups,
-    };
-  };
-
-  const stats = calculateSummaryStats();
+  console.log('Stats:', stats);
 
   return (
     <div className='@container/main flex flex-1 flex-col gap-2'>
