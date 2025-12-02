@@ -100,8 +100,20 @@ async function seedRotations(client: VercelPoolClient) {
   }
 }
 
+async function dropTables(client: VercelPoolClient) {
+  try {
+    await client.sql`DROP TABLE IF EXISTS rotations CASCADE`;
+    await client.sql`DROP TABLE IF EXISTS users CASCADE`;
+    console.log('Dropped existing tables');
+  } catch (error) {
+    console.error('Error dropping tables:', error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
+  await dropTables(client);
   await seedUsers(client);
   await seedRotations(client);
   client.release();

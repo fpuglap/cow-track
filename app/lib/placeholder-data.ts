@@ -4,194 +4,129 @@ import { PaddockDataBySector } from '@/lib/definitions';
 export const users = [
   {
     id: '8d451e49-4a1c-4c43-b6e1-96a85c5b4bd1',
-    name: 'La Esmeralda',
-    email: 'esmeralda@admin.com',
-    password: 'Esm3ralda_Adm1n!2025',
+    name: 'Cowrporation',
+    email: 'admin@cowrporation.com',
+    password: 'Demo_P4ssw0rd!',
   },
 ];
 
-export const rotations = [
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
-    cattle_group: 'Vacas Cría 1',
-    origin_pasture: 'Potrero Sur',
-    destination_pasture: 'Potrero Norte',
-    rotation_date: '2025-03-23',
-    days_in_pasture: 5,
-    observations: 'Rotación programada',
-  },
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442b',
-    cattle_group: 'Novillos A',
-    origin_pasture: 'Potrero Norte',
-    destination_pasture: 'Potrero Este',
-    rotation_date: '2025-03-21',
-    days_in_pasture: 24,
-    observations: 'Pasto agotado',
-  },
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442c',
-    cattle_group: 'Terneros 2023',
-    origin_pasture: 'Potrero Este',
-    destination_pasture: 'Potrero Oeste',
-    rotation_date: '2025-03-19',
-    days_in_pasture: 13,
-    observations: 'Rotación normal',
-  },
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442d',
-    cattle_group: 'Vaquillas',
-    origin_pasture: 'Potrero Oeste',
-    destination_pasture: 'Potrero Central',
-    rotation_date: '2025-03-17',
-    days_in_pasture: 23,
-    observations: 'Rotación por falta de agua',
-  },
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442e',
-    cattle_group: 'Toros',
-    origin_pasture: 'Potrero Central',
-    destination_pasture: 'Potrero Sur',
-    rotation_date: '2025-03-15',
-    days_in_pasture: 16,
-    observations: 'Rotación urgente',
-  },
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442f',
-    cattle_group: 'Vacas Cría 2',
-    origin_pasture: 'Potrero Sur',
-    destination_pasture: 'Potrero Norte',
-    rotation_date: '2025-03-13',
-    days_in_pasture: 8,
-    observations: 'Descanso de potrero',
-  },
-  {
-    id: '4058dc9e-712f-4377-85e9-fec4b6a64420',
-    cattle_group: 'Novillos B',
-    origin_pasture: 'Potrero Norte',
-    destination_pasture: 'Potrero Este',
-    rotation_date: '2025-03-11',
-    days_in_pasture: 21,
-    observations: 'Pasto agotado',
-  },
-  {
-    id: '4158dc9e-712f-4377-85e9-fec4b6a64421',
-    cattle_group: 'Terneros 2022',
-    origin_pasture: 'Potrero Este',
-    destination_pasture: 'Potrero Oeste',
-    rotation_date: '2025-03-09',
-    days_in_pasture: 26,
-    observations: 'Rotación programada',
-  },
-  {
-    id: '4258dc9e-712f-4377-85e9-fec4b6a64422',
-    cattle_group: 'Vaquillas Jóvenes',
-    origin_pasture: 'Potrero Oeste',
-    destination_pasture: 'Potrero Central',
-    rotation_date: '2025-03-07',
-    days_in_pasture: 23,
-    observations: 'Rotación urgente',
-  },
-  {
-    id: '4358dc9e-712f-4377-85e9-fec4b6a64423',
-    cattle_group: 'Vacas Lecheras',
-    origin_pasture: 'Potrero Central',
-    destination_pasture: 'Potrero Sur',
-    rotation_date: '2025-03-05',
-    days_in_pasture: 28,
-    observations: 'Rotación por falta de agua',
-  },
-  {
-    id: '4458dc9e-712f-4377-85e9-fec4b6a64424',
-    cattle_group: 'Vacas Cría 1',
-    origin_pasture: 'Potrero Sur',
-    destination_pasture: 'Potrero Norte',
-    rotation_date: '2025-03-03',
-    days_in_pasture: 31,
-    observations: 'Rotación urgente',
-  },
-  {
-    id: '4558dc9e-712f-4377-85e9-fec4b6a64425',
-    cattle_group: 'Novillos A',
-    origin_pasture: 'Potrero Norte',
-    destination_pasture: 'Potrero Este',
-    rotation_date: '2025-03-01',
-    days_in_pasture: 10,
-    observations: 'Descanso de potrero',
-  },
-  {
-    id: '4658dc9e-712f-4377-85e9-fec4b6a64426',
-    cattle_group: 'Terneros 2023',
-    origin_pasture: 'Potrero Este',
-    destination_pasture: 'Potrero Oeste',
-    rotation_date: '2025-02-27',
-    days_in_pasture: 33,
-    observations: 'Rotación por falta de agua',
-  },
-  {
-    id: '4758dc9e-712f-4377-85e9-fec4b6a64427',
-    cattle_group: 'Vaquillas',
-    origin_pasture: 'Potrero Oeste',
-    destination_pasture: 'Potrero Central',
-    rotation_date: '2025-02-25',
-    days_in_pasture: 34,
-    observations: 'Pasto agotado',
-  },
-  {
-    id: '4858dc9e-712f-4377-85e9-fec4b6a64428',
-    cattle_group: 'Toros',
-    origin_pasture: 'Potrero Central',
-    destination_pasture: 'Potrero Sur',
-    rotation_date: '2025-02-23',
-    days_in_pasture: 35,
-    observations: 'Rotación urgente',
-  },
-  {
-    id: '4958dc9e-712f-4377-85e9-fec4b6a64429',
-    cattle_group: 'Vacas Cría 2',
-    origin_pasture: 'Potrero Sur',
-    destination_pasture: 'Potrero Norte',
-    rotation_date: '2025-02-21',
-    days_in_pasture: 36,
-    observations: 'Rotación programada',
-  },
-  {
-    id: '5058dc9e-712f-4377-85e9-fec4b6a6442a',
-    cattle_group: 'Novillos B',
-    origin_pasture: 'Potrero Norte',
-    destination_pasture: 'Potrero Este',
-    rotation_date: '2025-02-19',
-    days_in_pasture: 37,
-    observations: 'Rotación urgente',
-  },
-  {
-    id: '5158dc9e-712f-4377-85e9-fec4b6a6442b',
-    cattle_group: 'Terneros 2022',
-    origin_pasture: 'Potrero Este',
-    destination_pasture: 'Potrero Oeste',
-    rotation_date: '2025-02-17',
-    days_in_pasture: 38,
-    observations: 'Pasto agotado',
-  },
-  {
-    id: '5258dc9e-712f-4377-85e9-fec4b6a6442c',
-    cattle_group: 'Vaquillas Jóvenes',
-    origin_pasture: 'Potrero Oeste',
-    destination_pasture: 'Potrero Central',
-    rotation_date: '2025-02-15',
-    days_in_pasture: 39,
-    observations: 'Rotación por falta de agua',
-  },
-  {
-    id: '5358dc9e-712f-4377-85e9-fec4b6a6442d',
-    cattle_group: 'Vacas Lecheras',
-    origin_pasture: 'Potrero Central',
-    destination_pasture: 'Potrero Sur',
-    rotation_date: '2025-02-13',
-    days_in_pasture: 40,
-    observations: 'Rotación urgente',
-  },
+// Helper to generate rotation data
+const cattleGroups = [
+  'Breeding Cows 1',
+  'Breeding Cows 2',
+  'Steers A',
+  'Steers B',
+  'Calves 2023',
+  'Calves 2024',
+  'Heifers',
+  'Young Heifers',
+  'Dairy Cows',
+  'Bulls',
 ];
+
+const paddocks = [
+  'North Paddock',
+  'South Paddock',
+  'East Paddock',
+  'West Paddock',
+  'Central Paddock',
+];
+
+const observations = [
+  'Scheduled rotation',
+  'Grass depleted',
+  'Normal rotation',
+  'Water shortage',
+  'Urgent rotation',
+  'Paddock rest needed',
+  'Routine move',
+  'Overgrazing prevention',
+  'Seasonal adjustment',
+  '',
+];
+
+// Pre-generated UUIDs for consistent seeding
+const uuids = [
+  'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d',
+  'b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e',
+  'c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f',
+  'd4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a',
+  'e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b',
+  'f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c',
+  'a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d',
+  'b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e',
+  'c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f',
+  'd0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a',
+  'e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b',
+  'f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c',
+  'a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d',
+  'b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e',
+  'c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f',
+  'd6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a',
+  'e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b',
+  'f8a9b0c1-d2e3-4f4a-5b6c-7d8e9f0a1b2c',
+  'a9b0c1d2-e3f4-4a5b-6c7d-8e9f0a1b2c3d',
+  'b0c1d2e3-f4a5-4b6c-7d8e-9f0a1b2c3d4e',
+  'c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f',
+  'd2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a',
+  'e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b',
+  'f4a5b6c7-d8e9-4f0a-1b2c-3d4e5f6a7b8c',
+  'a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d',
+  'b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0e',
+  'c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f',
+  'd8e9f0a1-b2c3-4d4e-5f6a-7b8c9d0e1f2a',
+  'e9f0a1b2-c3d4-4e5f-6a7b-8c9d0e1f2a3b',
+  'f0a1b2c3-d4e5-4f6a-7b8c-9d0e1f2a3b4c',
+  'a1b2c3d4-e5f6-4a7b-8c9d-1e2f3a4b5c6d',
+  'b2c3d4e5-f6a7-4b8c-9d0e-2f3a4b5c6d7e',
+  'c3d4e5f6-a7b8-4c9d-0e1f-3a4b5c6d7e8f',
+  'd4e5f6a7-b8c9-4d0e-1f2a-4b5c6d7e8f9a',
+  'e5f6a7b8-c9d0-4e1f-2a3b-5c6d7e8f9a0b',
+  'f6a7b8c9-d0e1-4f2a-3b4c-6d7e8f9a0b1c',
+  'a7b8c9d0-e1f2-4a3b-4c5d-7e8f9a0b1c2d',
+  'b8c9d0e1-f2a3-4b4c-5d6e-8f9a0b1c2d3e',
+  'c9d0e1f2-a3b4-4c5d-6e7f-9a0b1c2d3e4f',
+  'd0e1f2a3-b4c5-4d6e-7f8a-0b1c2d3e4f5a',
+  'e1f2a3b4-c5d6-4e7f-8a9b-1c2d3e4f5a6b',
+  'f2a3b4c5-d6e7-4f8a-9b0c-2d3e4f5a6b7c',
+  'a3b4c5d6-e7f8-4a9b-0c1d-3e4f5a6b7c8d',
+  'b4c5d6e7-f8a9-4b0c-1d2e-4f5a6b7c8d9e',
+  'c5d6e7f8-a9b0-4c1d-2e3f-5a6b7c8d9e0f',
+  'd6e7f8a9-b0c1-4d2e-3f4a-6b7c8d9e0f1a',
+  'e7f8a9b0-c1d2-4e3f-4a5b-7c8d9e0f1a2b',
+  'f8a9b0c1-d2e3-4f4a-5b6c-8d9e0f1a2b3c',
+  'a9b0c1d2-e3f4-4a5b-6c7d-9e0f1a2b3c4d',
+  'b0c1d2e3-f4a5-4b6c-7d8e-0f1a2b3c4d5e',
+];
+
+// Generate 50 rotation records
+function generateRotations() {
+  const rotations = [];
+  const startDate = new Date('2025-01-01');
+
+  for (let i = 0; i < 50; i++) {
+    const date = new Date(startDate);
+    date.setDate(date.getDate() + i * 2);
+
+    const originIndex = i % paddocks.length;
+    let destIndex = (originIndex + 1 + (i % 3)) % paddocks.length;
+    if (destIndex === originIndex) destIndex = (destIndex + 1) % paddocks.length;
+
+    rotations.push({
+      id: uuids[i],
+      cattle_group: cattleGroups[i % cattleGroups.length],
+      origin_pasture: paddocks[originIndex],
+      destination_pasture: paddocks[destIndex],
+      rotation_date: date.toISOString().split('T')[0],
+      days_in_pasture: 5 + (i % 25),
+      observations: observations[i % observations.length],
+    });
+  }
+
+  return rotations;
+}
+
+export const rotations = generateRotations();
 
 // Mock data for paddocks
 export const paddockData: PaddockDataBySector = {
@@ -225,7 +160,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 80,
       area: 6.8,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
@@ -275,7 +210,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 80,
       area: 8.4,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
@@ -307,7 +242,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 85,
       area: 6.9,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
@@ -341,7 +276,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 80,
       area: 7.6,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
@@ -373,7 +308,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 85,
       area: 7.7,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
@@ -399,7 +334,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 80,
       area: 8.6,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
@@ -439,7 +374,7 @@ export const paddockData: PaddockDataBySector = {
       status: 'vacant',
       grassHeight: 85,
       area: 8.0,
-      recoveryRate: 'estable',
+      recoveryRate: 'stable',
       readyIn: 0,
     },
     {
