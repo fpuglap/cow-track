@@ -53,12 +53,12 @@ export function DataTabs() {
       </TabsContent>
       <TabsContent value='cattle' className='flex flex-col px-4 lg:px-6'>
         <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Cattle group information in development
+          Cattle group management coming soon
         </div>
       </TabsContent>
       <TabsContent value='reports' className='flex flex-col px-4 lg:px-6'>
         <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Reports and documents in development
+          Reports and documents coming soon
         </div>
       </TabsContent>
     </Tabs>
