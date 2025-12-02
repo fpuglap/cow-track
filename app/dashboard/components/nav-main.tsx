@@ -39,16 +39,16 @@ export function NavMain({
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <SidebarMenuButton
-                  tooltip='Nueva rotación'
+                  tooltip='New rotation'
                   className='bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear'
                 >
                   <IconCirclePlusFilled />
-                  <span>Nueva rotación</span>
+                  <span>New rotation</span>
                 </SidebarMenuButton>
               </DialogTrigger>
               <DialogContent className='max-h-[90vh] overflow-y-auto'>
                 <DialogHeader>
-                  <DialogTitle>Registrar Rotación</DialogTitle>
+                  <DialogTitle>Add Rotation</DialogTitle>
                 </DialogHeader>
                 <RotationForm onSuccess={() => setOpen(false)} />
               </DialogContent>

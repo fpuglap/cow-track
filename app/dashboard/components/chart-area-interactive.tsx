@@ -124,14 +124,14 @@ const chartData = [
   { date: '2024-06-30', rotation: 446, recovery: 400 },
 ];
 
-// Keep same structure as original with Spanish labels
+// Chart configuration with English labels
 const chartConfig = {
   rotation: {
-    label: 'Rotaciones',
+    label: 'Rotations',
     color: 'var(--primary)',
   },
   recovery: {
-    label: 'Recuperación (%)',
+    label: 'Recovery (%)',
     color: 'var(--primary)',
   },
 } satisfies ChartConfig;
@@ -163,12 +163,12 @@ export function ChartAreaInteractive() {
   return (
     <Card className='@container/card'>
       <CardHeader>
-        <CardTitle>Rotaciones - Recuperación</CardTitle>
+        <CardTitle>Rotations - Recovery</CardTitle>
         <CardDescription>
           <span className='hidden @[540px]/card:block'>
-            Total de los últimos 3 meses
+            Total for the last 3 months
           </span>
-          <span className='@[540px]/card:hidden'>Últimos 3 meses</span>
+          <span className='@[540px]/card:hidden'>Last 3 months</span>
         </CardDescription>
         <CardAction>
           <ToggleGroup
@@ -178,9 +178,9 @@ export function ChartAreaInteractive() {
             variant='outline'
             className='hidden *:data-[slot=toggle-group-item]:!px-4 @[767px]/card:flex'
           >
-            <ToggleGroupItem value='90d'>Últimos 3 meses</ToggleGroupItem>
-            <ToggleGroupItem value='30d'>Últimos 30 días</ToggleGroupItem>
-            <ToggleGroupItem value='7d'>Últimos 7 días</ToggleGroupItem>
+            <ToggleGroupItem value='90d'>Last 3 months</ToggleGroupItem>
+            <ToggleGroupItem value='30d'>Last 30 days</ToggleGroupItem>
+            <ToggleGroupItem value='7d'>Last 7 days</ToggleGroupItem>
           </ToggleGroup>
           <Select value={timeRange} onValueChange={setTimeRange}>
             <SelectTrigger
@@ -188,17 +188,17 @@ export function ChartAreaInteractive() {
               size='sm'
               aria-label='Select a value'
             >
-              <SelectValue placeholder='Últimos 3 meses' />
+              <SelectValue placeholder='Last 3 months' />
             </SelectTrigger>
             <SelectContent className='rounded-xl'>
               <SelectItem value='90d' className='rounded-lg'>
-                Últimos 3 meses
+                Last 3 months
               </SelectItem>
               <SelectItem value='30d' className='rounded-lg'>
-                Últimos 30 días
+                Last 30 days
               </SelectItem>
               <SelectItem value='7d' className='rounded-lg'>
-                Últimos 7 días
+                Last 7 days
               </SelectItem>
             </SelectContent>
           </Select>
@@ -245,7 +245,7 @@ export function ChartAreaInteractive() {
               minTickGap={32}
               tickFormatter={(value) => {
                 const date = new Date(value);
-                return date.toLocaleDateString('es-ES', {
+                return date.toLocaleDateString('en-US', {
                   month: 'short',
                   day: 'numeric',
                 });
@@ -257,7 +257,7 @@ export function ChartAreaInteractive() {
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString('es-ES', {
+                    return new Date(value).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
                     });

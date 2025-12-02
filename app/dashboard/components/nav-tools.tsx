@@ -38,7 +38,7 @@ export function NavTools({
 
   return (
     <SidebarGroup className='group-data-[collapsible=icon]:hidden'>
-      <SidebarGroupLabel>Herramientas</SidebarGroupLabel>
+      <SidebarGroupLabel>Tools</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
@@ -65,16 +65,16 @@ export function NavTools({
               >
                 <DropdownMenuItem>
                   <IconFolder />
-                  <span>Abrir</span>
+                  <span>Open</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <IconShare3 />
-                  <span>Compartir</span>
+                  <span>Share</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant='destructive'>
                   <IconTrash />
-                  <span>Eliminar</span>
+                  <span>Delete</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -83,7 +83,7 @@ export function NavTools({
         <SidebarMenuItem>
           <SidebarMenuButton className='text-sidebar-foreground/70'>
             <IconDots className='text-sidebar-foreground/70' />
-            <span>Más</span>
+            <span>More</span>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>

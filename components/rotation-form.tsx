@@ -29,18 +29,18 @@ import { cattleGroups, paddocks } from '@/app/lib/constants';
 
 const RotationFormSchema = z.object({
   cattle_group: z.string({
-    required_error: 'El grupo de ganado es requerido',
+    required_error: 'Cattle group is required',
   }),
   origin_pasture: z.string({
-    required_error: 'El potrero de origen es requerido',
+    required_error: 'Origin paddock is required',
   }),
   destination_pasture: z.string({
-    required_error: 'El potrero de destino es requerido',
+    required_error: 'Destination paddock is required',
   }),
   days_in_pasture: z.coerce
     .number()
     .int()
-    .min(0, 'Los días deben ser un número positivo'),
+    .min(0, 'Days must be a positive number'),
   observations: z.string().optional(),
 });
 
@@ -69,8 +69,8 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
       const result = await createRotationAction({}, formData);
 
       if (result?.success) {
-        toast('Rotación registrada', {
-          description: 'La rotación ha sido registrada exitosamente.',
+        toast('Rotation registered', {
+          description: 'The rotation has been registered successfully.',
         });
         form.reset();
         if (onSuccess) {
@@ -82,9 +82,9 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
         });
       }
     } catch (error) {
-      console.error('Error al enviar el formulario:', error);
+      console.error('Error submitting form:', error);
       toast('Error', {
-        description: 'Ocurrió un error al registrar la rotación.',
+        description: 'An error occurred while registering the rotation.',
       });
     }
   }
@@ -100,11 +100,11 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
           name='cattle_group'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Grupo de ganado</FormLabel>
+              <FormLabel>Cattle Group</FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder='Seleccionar grupo de ganado' />
+                    <SelectValue placeholder='Select cattle group' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -116,7 +116,7 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
                 </SelectContent>
               </Select>
               <FormDescription>
-                Selecciona el grupo de ganado que será rotado.
+                Select the cattle group to be rotated.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -128,11 +128,11 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
           name='origin_pasture'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Potrero origen</FormLabel>
+              <FormLabel>Origin Paddock</FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder='Seleccionar potrero origen' />
+                    <SelectValue placeholder='Select origin paddock' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -144,7 +144,7 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
                 </SelectContent>
               </Select>
               <FormDescription>
-                Potrero donde se encuentra actualmente el ganado.
+                Paddock where the cattle is currently located.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -156,11 +156,11 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
           name='destination_pasture'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Potrero destino</FormLabel>
+              <FormLabel>Destination Paddock</FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder='Seleccionar potrero destino' />
+                    <SelectValue placeholder='Select destination paddock' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -172,7 +172,7 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
                 </SelectContent>
               </Select>
               <FormDescription>
-                Potrero hacia donde será trasladado el ganado.
+                Paddock where the cattle will be moved to.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -184,7 +184,7 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
           name='days_in_pasture'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Días en potrero</FormLabel>
+              <FormLabel>Days in Paddock</FormLabel>
               <FormControl>
                 <Input
                   type='number'
@@ -196,7 +196,7 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
                 />
               </FormControl>
               <FormDescription>
-                Cantidad de días que el ganado estuvo en el potrero de origen.
+                Number of days the cattle spent in the origin paddock.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -208,23 +208,23 @@ export function RotationForm({ onSuccess }: { onSuccess?: () => void }) {
           name='observations'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Observaciones</FormLabel>
+              <FormLabel>Notes</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder='Notas adicionales sobre la rotación'
+                  placeholder='Additional notes about the rotation'
                   className='resize-none'
                   {...field}
                 />
               </FormControl>
               <FormDescription>
-                Información adicional relevante sobre esta rotación.
+                Additional relevant information about this rotation.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <Button type='submit'>Registrar Rotación</Button>
+        <Button type='submit'>Add Rotation</Button>
       </form>
     </Form>
   );

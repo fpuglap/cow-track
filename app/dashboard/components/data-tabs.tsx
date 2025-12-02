@@ -16,49 +16,49 @@ import Paddocks from '@/components/paddocks';
 export function DataTabs() {
   return (
     <Tabs
-      defaultValue='potreros'
+      defaultValue='paddocks'
       className='w-full flex-col justify-start gap-6'
     >
       <div className='flex items-center justify-between px-4 lg:px-6'>
         <Label htmlFor='view-selector' className='sr-only'>
-          Vista
+          View
         </Label>
-        <Select defaultValue='potreros'>
+        <Select defaultValue='paddocks'>
           <SelectTrigger
             className='flex w-fit @4xl/main:hidden'
             size='sm'
             id='view-selector'
           >
-            <SelectValue placeholder='Seleccionar vista' />
+            <SelectValue placeholder='Select view' />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value='potreros'>Potreros</SelectItem>
-            <SelectItem value='ganado'>Ganado</SelectItem>
-            <SelectItem value='informes'>Informes</SelectItem>
+            <SelectItem value='paddocks'>Paddocks</SelectItem>
+            <SelectItem value='cattle'>Cattle</SelectItem>
+            <SelectItem value='reports'>Reports</SelectItem>
           </SelectContent>
         </Select>
         <TabsList className='**:data-[slot=badge]:bg-muted-foreground/30 hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:px-1 @4xl/main:flex'>
-          <TabsTrigger value='potreros'>
-            Potreros <Badge variant='secondary'>5</Badge>
+          <TabsTrigger value='paddocks'>
+            Paddocks <Badge variant='secondary'>5</Badge>
           </TabsTrigger>
-          <TabsTrigger value='ganado'>
-            Ganado <Badge variant='secondary'>3</Badge>
+          <TabsTrigger value='cattle'>
+            Cattle <Badge variant='secondary'>3</Badge>
           </TabsTrigger>
-          <TabsTrigger value='informes'>Informes</TabsTrigger>
+          <TabsTrigger value='reports'>Reports</TabsTrigger>
         </TabsList>
         <div className='flex items-center gap-2'></div>
       </div>
-      <TabsContent value='potreros'>
+      <TabsContent value='paddocks'>
         <Paddocks />
       </TabsContent>
-      <TabsContent value='ganado' className='flex flex-col px-4 lg:px-6'>
+      <TabsContent value='cattle' className='flex flex-col px-4 lg:px-6'>
         <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Información de grupos de ganado en desarrollo
+          Cattle group information in development
         </div>
       </TabsContent>
-      <TabsContent value='informes' className='flex flex-col px-4 lg:px-6'>
+      <TabsContent value='reports' className='flex flex-col px-4 lg:px-6'>
         <div className='aspect-video w-full flex-1 rounded-lg border border-dashed flex items-center justify-center text-muted-foreground'>
-          Informes y documentos en desarrollo
+          Reports and documents in development
         </div>
       </TabsContent>
     </Tabs>

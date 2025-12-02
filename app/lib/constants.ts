@@ -1,22 +1,22 @@
-// Lista de grupos de ganado disponibles
+// Available cattle groups
 export const cattleGroups = [
-  'Vacas Cría 1',
-  'Vacas Cría 2',
-  'Novillos A',
-  'Novillos B',
-  'Terneros 2022',
-  'Terneros 2023',
-  'Vaquillos',
-  'Vaquillos Jóvenes',
-  'Vacas Lecheras',
-  'Toros',
+  'Breeding Cows 1',
+  'Breeding Cows 2',
+  'Steers A',
+  'Steers B',
+  'Calves 2022',
+  'Calves 2023',
+  'Heifers',
+  'Young Heifers',
+  'Dairy Cows',
+  'Bulls',
 ];
 
-// Lista de potreros disponibles
+// Available paddocks
 export const paddocks = [
-  'Potrero Norte',
-  'Potrero Sur',
-  'Potrero Este',
-  'Potrero Oeste',
-  'Potrero Central',
+  'North Paddock',
+  'South Paddock',
+  'East Paddock',
+  'West Paddock',
+  'Central Paddock',
 ];

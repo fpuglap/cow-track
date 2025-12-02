@@ -15,30 +15,30 @@ import {
 
 const DEFAULT_THEMES = [
   {
-    name: 'Base',
+    name: 'Default',
     value: 'default',
   },
   {
-    name: 'Azul',
+    name: 'Blue',
     value: 'blue',
   },
   {
-    name: 'Verde',
+    name: 'Green',
     value: 'green',
   },
   {
-    name: 'Ámbar',
+    name: 'Amber',
     value: 'amber',
   },
 ];
 
 const SCALED_THEMES = [
   {
-    name: 'Base',
+    name: 'Default',
     value: 'default-scaled',
   },
   {
-    name: 'Azul',
+    name: 'Blue',
     value: 'blue-scaled',
   },
 ];
@@ -56,7 +56,7 @@ export function ThemeSelector() {
   return (
     <div className='flex items-center gap-2'>
       <Label htmlFor='theme-selector' className='sr-only'>
-        Tema
+        Theme
       </Label>
       <Select value={activeTheme} onValueChange={setActiveTheme}>
         <SelectTrigger
@@ -64,13 +64,13 @@ export function ThemeSelector() {
           size='sm'
           className='justify-start *:data-[slot=select-value]:w-12'
         >
-          <span className='text-muted-foreground hidden sm:block'>Tema:</span>
-          <span className='text-muted-foreground block sm:hidden'>Tema</span>
-          <SelectValue placeholder='Seleccionar tema' />
+          <span className='text-muted-foreground hidden sm:block'>Theme:</span>
+          <span className='text-muted-foreground block sm:hidden'>Theme</span>
+          <SelectValue placeholder='Select theme' />
         </SelectTrigger>
         <SelectContent align='end'>
           <SelectGroup>
-            <SelectLabel>Base</SelectLabel>
+            <SelectLabel>Default</SelectLabel>
             {DEFAULT_THEMES.map((theme) => (
               <SelectItem key={theme.name} value={theme.value}>
                 {theme.name}
@@ -79,7 +79,7 @@ export function ThemeSelector() {
           </SelectGroup>
           <SelectSeparator />
           <SelectGroup>
-            <SelectLabel>Escalado</SelectLabel>
+            <SelectLabel>Scaled</SelectLabel>
             {SCALED_THEMES.map((theme) => (
               <SelectItem key={theme.name} value={theme.value}>
                 {theme.name}

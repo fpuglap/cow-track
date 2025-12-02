@@ -29,18 +29,18 @@ import { RotationItem } from '@/lib/definitions';
 const UpdateRotationSchema = z.object({
   id: z.string(),
   cattle_group: z.string({
-    required_error: 'El grupo de ganado es requerido',
+    required_error: 'Cattle group is required',
   }),
   origin_pasture: z.string({
-    required_error: 'El potrero de origen es requerido',
+    required_error: 'Origin paddock is required',
   }),
   destination_pasture: z.string({
-    required_error: 'El potrero de destino es requerido',
+    required_error: 'Destination paddock is required',
   }),
   days_in_pasture: z.coerce
     .number()
     .int()
-    .min(0, 'Los días deben ser un número positivo'),
+    .min(0, 'Days must be a positive number'),
   observations: z.string().optional(),
   rotation_date: z.string().optional(),
 });
@@ -77,8 +77,8 @@ export function UpdateRotationForm({
       const result = await updateRotationAction({}, formData);
 
       if (result?.success) {
-        toast('Rotación actualizada', {
-          description: 'La rotación ha sido actualizada exitosamente.',
+        toast('Rotation updated', {
+          description: 'The rotation has been updated successfully.',
         });
         if (onSuccess) {
           onSuccess();
@@ -89,9 +89,9 @@ export function UpdateRotationForm({
         });
       }
     } catch (error) {
-      console.error('Error al actualizar la rotación:', error);
+      console.error('Error updating rotation:', error);
       toast('Error', {
-        description: 'Ocurrió un error al actualizar la rotación.',
+        description: 'An error occurred while updating the rotation.',
       });
     }
   }
@@ -104,7 +104,7 @@ export function UpdateRotationForm({
           className='flex flex-col gap-4'
         >
           <div className='flex flex-col gap-3'>
-            <FormLabel className='mb-1.5'>Grupo de Ganado</FormLabel>
+            <FormLabel className='mb-1.5'>Cattle Group</FormLabel>
             <FormField
               control={form.control}
               name='cattle_group'
@@ -112,7 +112,7 @@ export function UpdateRotationForm({
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger className='w-full'>
-                      <SelectValue placeholder='Seleccionar grupo de ganado' />
+                      <SelectValue placeholder='Select cattle group' />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -134,11 +134,11 @@ export function UpdateRotationForm({
                 name='origin_pasture'
                 render={({ field }) => (
                   <FormItem className='space-y-0'>
-                    <FormLabel className='mb-1.5'>Potrero Origen</FormLabel>
+                    <FormLabel className='mb-1.5'>Origin Paddock</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger className='w-full'>
-                          <SelectValue placeholder='Seleccionar potrero origen' />
+                          <SelectValue placeholder='Select origin paddock' />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -161,11 +161,11 @@ export function UpdateRotationForm({
                 name='destination_pasture'
                 render={({ field }) => (
                   <FormItem className='space-y-0'>
-                    <FormLabel className='mb-1.5'>Potrero Destino</FormLabel>
+                    <FormLabel className='mb-1.5'>Destination Paddock</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger className='w-full'>
-                          <SelectValue placeholder='Seleccionar potrero destino' />
+                          <SelectValue placeholder='Select destination paddock' />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -190,7 +190,7 @@ export function UpdateRotationForm({
                 name='rotation_date'
                 render={({ field }) => (
                   <FormItem className='space-y-0'>
-                    <FormLabel className='mb-1.5'>Fecha</FormLabel>
+                    <FormLabel className='mb-1.5'>Date</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -210,7 +210,7 @@ export function UpdateRotationForm({
                 name='days_in_pasture'
                 render={({ field }) => (
                   <FormItem className='space-y-0'>
-                    <FormLabel className='mb-1.5'>Días en Potrero</FormLabel>
+                    <FormLabel className='mb-1.5'>Days in Paddock</FormLabel>
                     <FormControl>
                       <Input
                         type='number'
@@ -233,17 +233,17 @@ export function UpdateRotationForm({
             name='observations'
             render={({ field }) => (
               <FormItem className='space-y-0'>
-                <FormLabel className='mb-1.5'>Observaciones</FormLabel>
+                <FormLabel className='mb-1.5'>Notes</FormLabel>
                 <FormControl>
                   {isMobile ? (
                     <Input
                       {...field}
-                      placeholder='Notas adicionales sobre la rotación'
+                      placeholder='Additional notes about the rotation'
                     />
                   ) : (
                     <Textarea
                       {...field}
-                      placeholder='Notas adicionales sobre la rotación'
+                      placeholder='Additional notes about the rotation'
                       className='resize-none max-h-40 overflow-y-auto'
                     />
                   )}
@@ -255,9 +255,9 @@ export function UpdateRotationForm({
         </form>
       </div>
       <DrawerFooter>
-        <Button onClick={form.handleSubmit(onSubmit)}>Guardar</Button>
+        <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
         <DrawerClose asChild>
-          <Button variant='outline'>Cerrar</Button>
+          <Button variant='outline'>Close</Button>
         </DrawerClose>
       </DrawerFooter>
     </Form>

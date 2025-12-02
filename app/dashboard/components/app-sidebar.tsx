@@ -37,33 +37,33 @@ import { NavUser } from '@/app/dashboard/components/nav-user';
 
 const data = {
   user: {
-    name: 'La Esmeralda',
-    email: 'esmeralda@admin.com',
+    name: 'Cowrporation',
+    email: 'admin@cowrporation.com',
     avatar: CowImage.src,
   },
   navMain: [
     {
-      title: 'Panel',
+      title: 'Dashboard',
       url: '#',
       icon: IconDashboard,
     },
     {
-      title: 'Rotaciones',
+      title: 'Rotations',
       url: '#',
       icon: IconListDetails,
     },
     {
-      title: 'Análisis',
+      title: 'Analytics',
       url: '#',
       icon: IconChartBar,
     },
     {
-      title: 'Potreros',
+      title: 'Paddocks',
       url: '#',
       icon: IconFolder,
     },
     {
-      title: 'Ganado',
+      title: 'Cattle',
       url: '#',
       icon: IconUsers,
     },
@@ -118,34 +118,34 @@ const data = {
   ],
   navSecondary: [
     {
-      title: 'Configuración',
+      title: 'Settings',
       url: '#',
       icon: IconSettings,
     },
     {
-      title: 'Ayuda',
+      title: 'Help',
       url: '#',
       icon: IconHelp,
     },
     {
-      title: 'Búsqueda',
+      title: 'Search',
       url: '#',
       icon: IconSearch,
     },
   ],
   tools: [
     {
-      name: 'Alertas',
+      name: 'Alerts',
       url: '#',
       icon: IconDatabase,
     },
     {
-      name: 'Calendario',
+      name: 'Calendar',
       url: '#',
       icon: IconReport,
     },
     {
-      name: 'Informes',
+      name: 'Reports',
       url: '#',
       icon: IconFileWord,
     },

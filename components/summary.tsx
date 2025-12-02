@@ -11,11 +11,11 @@ import { Badge } from '@/components/ui/badge';
 import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react';
 import { SummaryCard, SummaryStats } from '@/lib/definitions';
 
-// Esta versión recibe las estadísticas como props
+// This version receives stats as props
 export function Summary({ stats }: { stats: SummaryStats }) {
   const summaryCards: SummaryCard[] = [
     {
-      title: 'Ocupación de Potreros',
+      title: 'Paddock Occupancy',
       value: `${stats.activePaddocks}/${stats.totalPaddocks}`,
       badge: {
         icon: <IconTrendingDown />,
@@ -23,40 +23,40 @@ export function Summary({ stats }: { stats: SummaryStats }) {
           (stats.activePaddocks / stats.totalPaddocks) * 100
         )}%`,
       },
-      line1: `Disponibles: ${stats.vacantPaddocks} potreros`,
+      line1: `Available: ${stats.vacantPaddocks} paddocks`,
       line1Icon: <IconTrendingUp className='size-4' />,
       line2:
         stats.vacantPaddocks > 0
-          ? 'Capacidad actual para más ganado'
-          : 'Sin capacidad disponible',
+          ? 'Current capacity for more cattle'
+          : 'No capacity available',
     },
     {
-      title: 'Grupos de Ganado',
+      title: 'Cattle Groups',
       value: stats.totalCattleGroups,
       badge: {
         icon: <IconTrendingUp />,
         text: '+1',
       },
-      line1: 'Todos asignados',
+      line1: 'All assigned',
       line1Icon: <IconTrendingUp className='size-4' />,
-      line2: 'Distribución óptima actual',
+      line2: 'Optimal distribution',
     },
     {
-      title: 'Rotaciones Pendientes',
+      title: 'Pending Rotations',
       value: stats.urgentRotations,
       badge: {
         icon:
           stats.urgentRotations > 0 ? <IconTrendingDown /> : <IconTrendingUp />,
-        text: stats.urgentRotations > 0 ? 'Urgente' : 'Al día',
+        text: stats.urgentRotations > 0 ? 'Urgent' : 'Up to date',
         class:
           stats.urgentRotations > 0 ? 'bg-amber-100 dark:bg-amber-900' : '',
       },
       line1:
         stats.urgentRotations > 0
-          ? `${stats.urgentRotations} rotación${
-              stats.urgentRotations > 1 ? 'es' : ''
-            } urgente${stats.urgentRotations > 1 ? 's' : ''} hoy`
-          : 'Sin rotaciones urgentes',
+          ? `${stats.urgentRotations} urgent rotation${
+              stats.urgentRotations > 1 ? 's' : ''
+            } today`
+          : 'No urgent rotations',
       line1Icon:
         stats.urgentRotations > 0 ? (
           <IconTrendingDown className='size-4' />
@@ -66,19 +66,19 @@ export function Summary({ stats }: { stats: SummaryStats }) {
       line1Class: stats.urgentRotations > 0 ? 'text-amber-500' : '',
       line2:
         stats.urgentRotations > 0
-          ? 'Requiere atención inmediata'
-          : 'Situación controlada',
+          ? 'Requires immediate attention'
+          : 'Situation under control',
     },
     {
-      title: 'Tasa de Recuperación',
+      title: 'Recovery Rate',
       value: `${stats.avgGrassHeight}%`,
       badge: {
         icon: <IconTrendingUp />,
         text: '+5%',
       },
-      line1: 'Mejora en descanso de potreros',
+      line1: 'Improved paddock rest',
       line1Icon: <IconTrendingUp className='size-4' />,
-      line2: 'Supera expectativa mensual',
+      line2: 'Exceeds monthly expectation',
     },
   ];
 

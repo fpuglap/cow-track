@@ -48,17 +48,17 @@ interface StatusConfigs {
 const statusConfig: StatusConfigs = {
   active: {
     color: 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300',
-    text: 'Con Ganado',
+    text: 'With Cattle',
     icon: <IconHorseshoe className='size-4' />,
   },
   recovery: {
     color: 'bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300',
-    text: 'En Recuperación',
+    text: 'In Recovery',
     icon: <IconClock className='size-4' />,
   },
   vacant: {
     color: 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300',
-    text: 'Libre',
+    text: 'Vacant',
     icon: <IconPlant className='size-4' />,
   },
 };
@@ -67,10 +67,10 @@ const statusConfig: StatusConfigs = {
 export function PaddockCards() {
   const [activeTab, setActiveTab] = useState('A');
 
-  // Estado de paginación
+  // Pagination state
   const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 4, // Tamaño predeterminado menor para que se vea la paginación
+    pageSize: 4, // Default smaller size to show pagination
   });
 
   // Function to render the footer content based on paddock status
@@ -79,11 +79,11 @@ export function PaddockCards() {
       return (
         <>
           <div className='line-clamp-1 flex gap-2 font-medium'>
-            {paddock.cattleCount} cabezas de ganado{' '}
+            {paddock.cattleCount} head of cattle{' '}
             <IconHorseshoe className='size-4' />
           </div>
           <div className='text-muted-foreground'>
-            Rotación en {paddock.daysLeft} días • {paddock.area} ha
+            Rotation in {paddock.daysLeft} days • {paddock.area} ha
           </div>
         </>
       );
@@ -93,11 +93,11 @@ export function PaddockCards() {
       return (
         <>
           <div className='line-clamp-1 flex gap-2 font-medium'>
-            Recuperación {paddock.recoveryRate}{' '}
+            Recovery {paddock.recoveryRate}{' '}
             <IconTrendingUp className='size-4' />
           </div>
           <div className='text-muted-foreground'>
-            Listo en {paddock.readyIn} días • {paddock.area} ha
+            Ready in {paddock.readyIn} days • {paddock.area} ha
           </div>
         </>
       );
@@ -106,26 +106,26 @@ export function PaddockCards() {
     return (
       <>
         <div className='line-clamp-1 flex gap-2 font-medium'>
-          Disponible para uso <IconPlant className='size-4' />
+          Available for use <IconPlant className='size-4' />
         </div>
         <div className='text-muted-foreground'>
           {paddock.grassHeight >= 70
-            ? 'Óptimo para pastoreo'
-            : 'Pastoreo posible'}{' '}
+            ? 'Optimal for grazing'
+            : 'Grazing possible'}{' '}
           • {paddock.area} ha
         </div>
       </>
     );
   };
 
-  // Cálculos de paginación para el sector activo
+  // Pagination calculations for the active sector
   const paddocksInActiveTab = paddockData[activeTab] || [];
   const pageCount = Math.ceil(paddocksInActiveTab.length / pagination.pageSize);
   const startIndex = pagination.pageIndex * pagination.pageSize;
   const endIndex = startIndex + pagination.pageSize;
   const currentPageData = paddocksInActiveTab.slice(startIndex, endIndex);
 
-  // Funciones de navegación
+  // Navigation functions
   const canPreviousPage = pagination.pageIndex > 0;
   const canNextPage = pagination.pageIndex < pageCount - 1;
 
@@ -143,7 +143,7 @@ export function PaddockCards() {
 
   const setPageSize = (newSize: string) => {
     setPagination(() => ({
-      pageIndex: 0, // Reiniciar a la primera página cuando se cambia el tamaño
+      pageIndex: 0, // Reset to first page when size changes
       pageSize: parseInt(newSize, 10),
     }));
   };
@@ -152,10 +152,10 @@ export function PaddockCards() {
     setPagination((prev) => ({ ...prev, pageIndex: index }));
   };
 
-  // Restablecer la paginación al cambiar de pestaña
+  // Reset pagination when changing tabs
   const handleTabChange = (value: string) => {
     setActiveTab(value);
-    setPagination((prev) => ({ ...prev, pageIndex: 0 })); // Volver a la primera página
+    setPagination((prev) => ({ ...prev, pageIndex: 0 })); // Go back to first page
   };
 
   return (
@@ -168,7 +168,7 @@ export function PaddockCards() {
         <TabsList className='grid w-full grid-cols-4'>
           {Object.keys(paddockData).map((sector) => (
             <TabsTrigger key={sector} value={sector}>
-              Sector {sector}
+              Section {sector}
             </TabsTrigger>
           ))}
         </TabsList>
@@ -179,11 +179,11 @@ export function PaddockCards() {
               {currentPageData.map((paddock) => (
                 <Card key={paddock.id} className='@container/card'>
                   <CardHeader>
-                    <CardDescription>Potrero {paddock.id}</CardDescription>
+                    <CardDescription>Paddock {paddock.id}</CardDescription>
                     <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
                       {paddock.grassHeight}%{' '}
                       <span className='text-sm font-normal'>
-                        altura de pasto
+                        grass height
                       </span>
                     </CardTitle>
                     <CardAction>
@@ -203,15 +203,15 @@ export function PaddockCards() {
               ))}
             </div>
 
-            {/* Paginación */}
+            {/* Pagination */}
             <div className='flex items-center justify-between px-4 mt-4 mb-2'>
               <div className='text-muted-foreground hidden flex-1 text-sm lg:flex'>
-                {pagination.pageIndex * pagination.pageSize + 1} a{' '}
+                {pagination.pageIndex * pagination.pageSize + 1} to{' '}
                 {Math.min(
                   (pagination.pageIndex + 1) * pagination.pageSize,
                   paddocksInActiveTab.length
                 )}{' '}
-                de {paddocksInActiveTab.length} potreros
+                of {paddocksInActiveTab.length} paddocks
               </div>
               <div className='flex w-full items-center gap-8 lg:w-fit'>
                 <div className='hidden items-center gap-2 lg:flex'>
@@ -219,7 +219,7 @@ export function PaddockCards() {
                     htmlFor='items-per-page'
                     className='text-sm font-medium'
                   >
-                    Potreros por página
+                    Paddocks per page
                   </Label>
                   <Select
                     value={`${pagination.pageSize}`}
@@ -242,7 +242,7 @@ export function PaddockCards() {
                   </Select>
                 </div>
                 <div className='flex w-fit items-center justify-center text-sm font-medium'>
-                  Página {pagination.pageIndex + 1} de {pageCount || 1}
+                  Page {pagination.pageIndex + 1} of {pageCount || 1}
                 </div>
                 <div className='ml-auto flex items-center gap-2 lg:ml-0'>
                   <Button
@@ -251,7 +251,7 @@ export function PaddockCards() {
                     onClick={() => setPageIndex(0)}
                     disabled={!canPreviousPage}
                   >
-                    <span className='sr-only'>Ir a la primera página</span>
+                    <span className='sr-only'>Go to first page</span>
                     <IconChevronsLeft className='size-4' />
                   </Button>
                   <Button
@@ -261,7 +261,7 @@ export function PaddockCards() {
                     onClick={previousPage}
                     disabled={!canPreviousPage}
                   >
-                    <span className='sr-only'>Ir a la página anterior</span>
+                    <span className='sr-only'>Go to previous page</span>
                     <IconChevronLeft className='size-4' />
                   </Button>
                   <Button
@@ -271,7 +271,7 @@ export function PaddockCards() {
                     onClick={nextPage}
                     disabled={!canNextPage}
                   >
-                    <span className='sr-only'>Ir a la página siguiente</span>
+                    <span className='sr-only'>Go to next page</span>
                     <IconChevronRight className='size-4' />
                   </Button>
                   <Button
@@ -281,7 +281,7 @@ export function PaddockCards() {
                     onClick={() => setPageIndex(pageCount - 1)}
                     disabled={!canNextPage}
                   >
-                    <span className='sr-only'>Ir a la última página</span>
+                    <span className='sr-only'>Go to last page</span>
                     <IconChevronsRight className='size-4' />
                   </Button>
                 </div>

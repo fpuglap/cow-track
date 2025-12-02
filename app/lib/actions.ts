@@ -42,14 +42,14 @@ export async function logout() {
 
 // Validation schema for rotations
 const RotationSchema = z.object({
-  cattle_group: z.string().min(1, 'El grupo de ganado es requerido'),
-  origin_pasture: z.string().min(1, 'El potrero de origen es requerido'),
-  destination_pasture: z.string().min(1, 'El potrero de destino es requerido'),
+  cattle_group: z.string().min(1, 'Cattle group is required'),
+  origin_pasture: z.string().min(1, 'Origin paddock is required'),
+  destination_pasture: z.string().min(1, 'Destination paddock is required'),
   rotation_date: z.string().optional(),
   days_in_pasture: z.coerce
     .number()
     .int()
-    .min(0, 'Los días deben ser un número positivo'),
+    .min(0, 'Days must be a positive number'),
   observations: z.string().optional(),
 });
 
@@ -86,7 +86,7 @@ export async function createRotationAction(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Faltan campos requeridos. No se pudo crear la rotación.',
+      message: 'Missing required fields. Could not create rotation.',
       success: false,
     };
   }
@@ -119,13 +119,13 @@ export async function createRotationAction(
 
     // Return success state instead of redirecting
     return {
-      message: 'Rotación creada exitosamente.',
+      message: 'Rotation created successfully.',
       success: true,
     };
   } catch (error) {
-    console.error('Error al crear rotación:', error);
+    console.error('Error creating rotation:', error);
     return {
-      message: 'Error de base de datos: No se pudo crear la rotación.',
+      message: 'Database error: Could not create rotation.',
       success: false,
     };
   }
@@ -140,7 +140,7 @@ export async function updateRotationAction(
 ) {
   // Create a schema that includes the ID for update
   const UpdateRotationSchema = RotationSchema.extend({
-    id: z.string().min(1, 'El ID es requerido para actualizar'),
+    id: z.string().min(1, 'ID is required for update'),
   });
 
   // Validate form data
@@ -158,7 +158,7 @@ export async function updateRotationAction(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Faltan campos requeridos. No se pudo actualizar la rotación.',
+      message: 'Missing required fields. Could not update rotation.',
       success: false,
     };
   }
@@ -191,13 +191,13 @@ export async function updateRotationAction(
 
     // Return success state
     return {
-      message: 'Rotación actualizada exitosamente.',
+      message: 'Rotation updated successfully.',
       success: true,
     };
   } catch (error) {
-    console.error('Error al actualizar rotación:', error);
+    console.error('Error updating rotation:', error);
     return {
-      message: 'Error de base de datos: No se pudo actualizar la rotación.',
+      message: 'Database error: Could not update rotation.',
       success: false,
     };
   }

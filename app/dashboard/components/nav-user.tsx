@@ -87,15 +87,15 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <IconUserCircle />
-                Cuenta
+                Account
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconCreditCard />
-                Facturación
+                Billing
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconNotification />
-                Notificaciones
+                Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -106,7 +106,7 @@ export function NavUser({
                   className='flex w-full items-center gap-2'
                 >
                   <IconLogout />
-                  Cerrar sesión
+                  Sign out
                 </button>
               </form>
             </DropdownMenuItem>

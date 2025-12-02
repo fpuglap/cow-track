@@ -172,7 +172,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: 'group',
-    header: 'Grupo de Ganado',
+    header: 'Cattle Group',
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />;
     },
@@ -180,7 +180,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: 'origin',
-    header: 'Potrero Origen',
+    header: 'Origin Paddock',
     cell: ({ row }) => (
       <div className='w-32'>
         <Badge variant='outline' className='text-muted-foreground px-1.5'>
@@ -198,7 +198,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: 'destination',
-    header: 'Potrero Destino',
+    header: 'Destination Paddock',
     cell: ({ row }) => (
       <div className='w-32'>
         <Badge variant='outline' className='text-muted-foreground px-1.5'>
@@ -209,25 +209,25 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: 'date',
-    header: 'Fecha',
+    header: 'Date',
     cell: ({ row }) => <div>{row.original.date}</div>,
   },
   {
     accessorKey: 'days',
-    header: 'Días en Potrero',
+    header: 'Days in Paddock',
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
           e.preventDefault();
           toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Guardando ${row.original.group}`,
-            success: 'Listo',
+            loading: `Saving ${row.original.group}`,
+            success: 'Done',
             error: 'Error',
           });
         }}
       >
         <Label htmlFor={`${row.original.id}-days`} className='sr-only'>
-          Días
+          Days
         </Label>
         <Input
           className='hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent'
@@ -239,7 +239,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: 'notes',
-    header: 'Observaciones',
+    header: 'Notes',
     cell: ({ row }) => {
       return row.original.notes || '-';
     },
@@ -259,10 +259,10 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end' className='w-32'>
-          <DropdownMenuItem>Editar</DropdownMenuItem>
-          <DropdownMenuItem>Duplicar</DropdownMenuItem>
+          <DropdownMenuItem>Edit</DropdownMenuItem>
+          <DropdownMenuItem>Duplicate</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant='destructive'>Eliminar</DropdownMenuItem>
+          <DropdownMenuItem variant='destructive'>Delete</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     ),
@@ -367,35 +367,35 @@ export function DataTable({
 
   return (
     <Tabs
-      defaultValue='rotaciones'
+      defaultValue='rotations'
       className='w-full flex-col justify-start gap-6'
     >
       <div className='flex items-center justify-between px-4 lg:px-6'>
         <Label htmlFor='view-selector' className='sr-only'>
-          Vista
+          View
         </Label>
-        <Select defaultValue='rotaciones'>
+        <Select defaultValue='rotations'>
           <SelectTrigger
             className='flex w-fit @4xl/main:hidden'
             size='sm'
             id='view-selector'
           >
-            <SelectValue placeholder='Seleccionar vista' />
+            <SelectValue placeholder='Select view' />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value='rotaciones'>Rotaciones</SelectItem>
+            <SelectItem value='rotations'>Rotations</SelectItem>
           </SelectContent>
         </Select>
         <TabsList className='**:data-[slot=badge]:bg-muted-foreground/30 hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:px-1 @4xl/main:flex'>
-          <TabsTrigger value='rotaciones'>Rotaciones</TabsTrigger>
+          <TabsTrigger value='rotations'>Rotations</TabsTrigger>
         </TabsList>
         <div className='flex items-center gap-2'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant='outline' size='sm'>
                 <IconLayoutColumns />
-                <span className='hidden lg:inline'>Personalizar Columnas</span>
-                <span className='lg:hidden'>Columnas</span>
+                <span className='hidden lg:inline'>Customize Columns</span>
+                <span className='lg:hidden'>Columns</span>
                 <IconChevronDown />
               </Button>
             </DropdownMenuTrigger>
@@ -409,12 +409,12 @@ export function DataTable({
                 )
                 .map((column) => {
                   const columnLabels: Record<string, string> = {
-                    group: 'Grupo de Ganado',
-                    source_paddock: 'Potrero Origen',
-                    target_paddock: 'Potrero Destino',
-                    date: 'Fecha',
-                    days_in_paddock: 'Días en Potrero',
-                    notes: 'Observaciones',
+                    group: 'Cattle Group',
+                    source_paddock: 'Origin Paddock',
+                    target_paddock: 'Destination Paddock',
+                    date: 'Date',
+                    days_in_paddock: 'Days in Paddock',
+                    notes: 'Notes',
                   };
 
                   const displayName = columnLabels[column.id] || column.id;
@@ -438,12 +438,12 @@ export function DataTable({
             <DialogTrigger asChild>
               <Button variant='outline' size='sm'>
                 <IconPlus />
-                <span className='hidden lg:inline'>Registrar Rotación</span>
+                <span className='hidden lg:inline'>Add Rotation</span>
               </Button>
             </DialogTrigger>
             <DialogContent className='max-h-[90vh] overflow-y-auto'>
               <DialogHeader>
-                <DialogTitle>Registrar Rotación</DialogTitle>
+                <DialogTitle>Add Rotation</DialogTitle>
               </DialogHeader>
               <RotationForm />
             </DialogContent>
@@ -451,7 +451,7 @@ export function DataTable({
         </div>
       </div>
       <TabsContent
-        value='rotaciones'
+        value='rotations'
         className='relative flex flex-col gap-4 overflow-auto px-4 lg:px-6'
       >
         <div className='overflow-hidden rounded-lg border'>
@@ -497,7 +497,7 @@ export function DataTable({
                       colSpan={columns.length}
                       className='h-24 text-center'
                     >
-                      No hay resultados.
+                      No results.
                     </TableCell>
                   </TableRow>
                 )}
@@ -507,13 +507,13 @@ export function DataTable({
         </div>
         <div className='flex items-center justify-between px-4'>
           <div className='text-muted-foreground hidden flex-1 text-sm lg:flex'>
-            {table.getFilteredSelectedRowModel().rows.length} de{' '}
-            {table.getFilteredRowModel().rows.length} fila(s) seleccionada(s).
+            {table.getFilteredSelectedRowModel().rows.length} of{' '}
+            {table.getFilteredRowModel().rows.length} row(s) selected.
           </div>
           <div className='flex w-full items-center gap-8 lg:w-fit'>
             <div className='hidden items-center gap-2 lg:flex'>
               <Label htmlFor='rows-per-page' className='text-sm font-medium'>
-                Filas por página
+                Rows per page
               </Label>
               <Select
                 value={`${table.getState().pagination.pageSize}`}
@@ -536,7 +536,7 @@ export function DataTable({
               </Select>
             </div>
             <div className='flex w-fit items-center justify-center text-sm font-medium'>
-              Página {table.getState().pagination.pageIndex + 1} de{' '}
+              Page {table.getState().pagination.pageIndex + 1} of{' '}
               {table.getPageCount()}
             </div>
             <div className='ml-auto flex items-center gap-2 lg:ml-0'>
@@ -546,7 +546,7 @@ export function DataTable({
                 onClick={() => table.setPageIndex(0)}
                 disabled={!table.getCanPreviousPage()}
               >
-                <span className='sr-only'>Ir a la primera página</span>
+                <span className='sr-only'>Go to first page</span>
                 <IconChevronsLeft />
               </Button>
               <Button
@@ -556,7 +556,7 @@ export function DataTable({
                 onClick={() => table.previousPage()}
                 disabled={!table.getCanPreviousPage()}
               >
-                <span className='sr-only'>Ir a la página anterior</span>
+                <span className='sr-only'>Go to previous page</span>
                 <IconChevronLeft />
               </Button>
               <Button
@@ -566,7 +566,7 @@ export function DataTable({
                 onClick={() => table.nextPage()}
                 disabled={!table.getCanNextPage()}
               >
-                <span className='sr-only'>Ir a la página siguiente</span>
+                <span className='sr-only'>Go to next page</span>
                 <IconChevronRight />
               </Button>
               <Button
@@ -576,7 +576,7 @@ export function DataTable({
                 onClick={() => table.setPageIndex(table.getPageCount() - 1)}
                 disabled={!table.getCanNextPage()}
               >
-                <span className='sr-only'>Ir a la última página</span>
+                <span className='sr-only'>Go to last page</span>
                 <IconChevronsRight />
               </Button>
             </div>
@@ -599,11 +599,11 @@ const chartData = [
 
 const chartConfig = {
   rotation: {
-    label: 'Rotaciones',
+    label: 'Rotations',
     color: 'var(--primary)',
   },
   recovery: {
-    label: 'Recuperación (%)',
+    label: 'Recovery (%)',
     color: 'var(--primary)',
   },
 } satisfies ChartConfig;
@@ -627,7 +627,7 @@ function TableCellViewer({ item }: { item: RotationItem }) {
         <DrawerHeader className='gap-1'>
           <DrawerTitle>{item.group}</DrawerTitle>
           <DrawerDescription>
-            Detalles de la rotación de ganado
+            Cattle rotation details
           </DrawerDescription>
         </DrawerHeader>
         <div className='flex flex-col gap-4 overflow-y-auto px-4 text-sm'>
@@ -677,13 +677,13 @@ function TableCellViewer({ item }: { item: RotationItem }) {
               <div className='grid gap-2'>
                 <div className='flex gap-2 leading-none font-medium'>
                   {item.days > 15
-                    ? 'Requiere rotación pronto'
-                    : 'Rotación dentro del periodo normal'}{' '}
+                    ? 'Requires rotation soon'
+                    : 'Rotation within normal period'}{' '}
                   <IconTrendingUp className='size-4' />
                 </div>
                 <div className='text-muted-foreground'>
-                  El grupo ha estado {item.days} días en el potrero actual. Se
-                  recomienda rotar cada 20-30 días según la condición del pasto.
+                  The group has been {item.days} days in the current paddock.
+                  Rotation every 20-30 days is recommended based on grass condition.
                 </div>
               </div>
               <Separator />
